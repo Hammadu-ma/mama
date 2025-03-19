@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Secret Training Institute - YouTube Video Showcase</title>
+  <style>
+    /* Modern Theme */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fc;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .header {
+      background-color: #7e0adc;
+      color: white;
+      padding: 5px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      background-color: #a800dc;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    /* Dark Mode */
+    .dark-theme {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+
+    /* Filter Section */
+    .filter-section {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 20px;
+    }
+
+    .filter-section select, .filter-section input {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      width: 200px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+
+    .filter-section select:focus, .filter-section input:focus {
+      border-color: #4CAF50;
+    }
+
+    /* Video Gallery */
+    .video-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .video-item {
+      width: 320px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .video-item:hover {
+      transform: scale(1.05);
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .video-item h3 {
+      margin: 10px;
+      font-size: 1.2rem;
+      color: #6005d0;
+    }
+
+    .video-item p {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 180px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-bar input {
+      padding: 12px;
+      width: 300px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .video-gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .filter-section {
+        flex-direction: column;
+      }
+
+      .filter-section select, .filter-section input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- Header with Theme Toggle -->
+  <div class="header">
+    <h1>The Secret Training Institute - YouTube Video Showcase</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Theme</button>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <select id="gradeSelect" onchange="filterVideos()">
+      <option value="all">Filter by Grade</option>
+      <option value="Grade 9">Grade 9</option>
+      <option value="Grade 10">Grade 10</option>
+      <option value="Grade 11">Grade 11</option>
+      <option value="Grade 12">Grade 12</option>
+    </select>
+
+    <select id="subjectSelect" onchange="filterVideos()">
+      <option value="all">Filter by Subject</option>
+      <option value="Math">Math</option>
+      <option value="Science">Science</option>
+      <option value="English">English</option>
+      <option value="History">History</option>
+    </select>
+
+    <select id="newSelect" onchange="filterVideos()">
+      <option value="all">New Videos</option>
+      <option value="new">New</option>
+    </select>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" onkeyup="searchVideos()" placeholder="Search by grade or subject">
+    </div>
+  </div>
+
+  <!-- Video Gallery -->
+  <div class="video-gallery" id="videoGallery">
+    <!-- Video Item Template -->
+    <div class="video-item" data-category="Grade 9, Math, new">
+      <h3>Grade 9 - Math</h3>
+      <iframe src="https://www.youtube.com/embed/SzFq9nnDqAM" title="Grade 9 Math"></iframe>
+      <p>New Video: Learn Algebra Basics</p>
+    </div>
+    <div class="video-item" data-category="Grade 9, Science">
+      <h3>Grade 9 - Science</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 9 Science"></iframe>
+      <p>Introduction to Physics</p>
+    </div>
+
+    <!-- Grade 10 Videos -->
+    <div class="video-item" data-category="Grade 10, Math">
+      <h3>Grade 10 - Math</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 10 Math"></iframe>
+      <p>Understanding Linear Equations</p>
+    </div>
+    <div class="video-item" data-category="Grade 10, Science">
+      <h3>Grade 10 - Science</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 10 Science"></iframe>
+      <p>Chemistry Basics</p>
+    </div>
+
+    <!-- Grade 11 Videos -->
+    <div class="video-item" data-category="Grade 11, Math, new">
+      <h3>Grade 11 - Math</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 11 Math"></iframe>
+      <p>New Video: Calculus 101</p>
+    </div>
+    <div class="video-item" data-category="Grade 11, Science">
+      <h3>Grade 11 - Science</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 11 Science"></iframe>
+      <p>Physics - Newton's Laws</p>
+    </div>
+
+    <!-- Grade 12 Videos -->
+    <div class="video-item" data-category="Grade 12, Math">
+      <h3>Grade 12 - Math</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 12 Math"></iframe>
+      <p>Advanced Calculus</p>
+    </div>
+    <div class="video-item" data-category="Grade 12, Science, new">
+      <h3>Grade 12 - Science</h3>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Grade 12 Science"></iframe>
+      <p>New Video: Organic Chemistry</p>
+    </div>
+  </div>
+
+  <script>
+    // Toggle between light and dark theme
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark-theme');
+      body.classList.toggle('light-theme');
+    }
+
+    // Search videos by text input
+    function searchVideos() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const videoItems = document.querySelectorAll('.video-item');
+
+      videoItems.forEach(item => {
+        const categories = item.getAttribute('data-category').toLowerCase();
+        if (categories.includes(input)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Filter videos by selected grade, subject, and new
+    function filterVideos() {
+      const selectedGrade = document.getElementById('gradeSelect').value.toLowerCase();
+      const selectedSubject = document.getElementById('subjectSelect').value.toLowerCase();
+      const selectedNew = document.getElementById('newSelect').value.toLowerCase();
+      const videoItems = document.querySelectorAll('.video-item');
+
+      videoItems.forEach(item => {
+        const categories = item.getAttribute('data-category').toLowerCase();
+        const show =
+          (selectedGrade === 'all' || categories.includes(selectedGrade)) &&
+          (selectedSubject === 'all' || categories.includes(selectedSubject)) &&
+          (selectedNew === 'all' || categories.includes('new'));
+
+        item.style.display = show ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
