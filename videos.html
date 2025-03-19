@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Videos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Uploaded Videos</h1>
+    </header>
+
+    <!-- Upload Video Form -->
+    <section class="upload-section">
+        <h2>Upload a Video</h2>
+        <input type="file" id="videoUpload" accept="video/*">
+        <input type="text" id="videoTitle" placeholder="Enter video title">
+        <select id="videoGrade">
+            <option value="all">Select Grade</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+        </select>
+        <select id="videoSubject">
+            <option value="all">Select Subject</option>
+            <option value="math">Mathematics</option>
+            <option value="science">Science</option>
+            <option value="english">English</option>
+            <option value="history">History</option>
+            <option value="geography">Geography</option>
+        </select>
+        <button onclick="uploadVideo()">Upload Video</button>
+    </section>
+
+    <!-- Search & Filters -->
+    <section class="filter-section">
+        <input type="text" id="searchBar" placeholder="Search videos..." onkeyup="filterVideos()">
+        <select id="filterGrade" onchange="filterVideos()">
+            <option value="all">All Grades</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+        </select>
+        <select id="filterSubject" onchange="filterVideos()">
+            <option value="all">All Subjects</option>
+            <option value="math">Mathematics</option>
+            <option value="science">Science</option>
+            <option value="english">English</option>
+            <option value="history">History</option>
+            <option value="geography">Geography</option>
+        </select>
+    </section>
+
+    <!-- Video Display Section -->
+    <section class="video-section">
+        <h2>Uploaded Videos</h2>
+        <div class="video-grid" id="videoGrid">
+            <!-- Uploaded videos will appear here -->
+        </div>
+    </section>
+
+</body>
+</html>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.upload-section, .filter-section, .video-section {
+    margin: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input, select, button {
+    margin: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.video-card {
+    width: 300px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.video-card video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    loadVideos();
+});
+
+// Function to upload video
+function uploadVideo() {
+    const videoUpload = document.getElementById("videoUpload");
+    const videoTitle = document.getElementById("videoTitle").value;
+    const videoGrade = document.getElementById("videoGrade").value;
+    const videoSubject = document.getElementById("videoSubject").value;
+
+    if (!videoUpload.files[0] || !videoTitle || videoGrade === "all" || videoSubject === "all") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    const videoFile = URL.createObjectURL(videoUpload.files[0]);
+
+    const videoData = {
+        title: videoTitle,
+        grade: videoGrade,
+        subject: videoSubject,
+        url: videoFile
+    };
+
+    let videos = JSON.parse(localStorage.getItem("uploadedVideos")) || [];
+    videos.push(videoData);
+    localStorage.setItem("uploadedVideos", JSON.stringify(videos));
+
+    loadVideos();
+}
+
+// Function to load videos from storage
+function loadVideos() {
+    const videoGrid = document.getElementById("videoGrid");
+    videoGrid.innerHTML = "";
+    const videos = JSON.parse(localStorage.getItem("uploadedVideos")) || [];
+
+    videos.forEach(video => {
+        const videoCard = document.createElement("div");
+        videoCard.classList.add("video-card");
+        videoCard.setAttribute("data-grade", video.grade);
+        videoCard.setAttribute("data-subject", video.subject);
+
+        videoCard.innerHTML = `
+            <video controls>
+                <source src="${video.url}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>${video.title}</h3>
+            <p>Grade: ${video.grade}, Subject: ${video.subject}</p>
+        `;
+
+        videoGrid.appendChild(videoCard);
+    });
+}
+
+// Function to filter videos
+function filterVideos() {
+    const searchQuery = document.getElementById("searchBar").value.toLowerCase();
+    const gradeFilter = document.getElementById("filterGrade").value;
+    const subjectFilter = document.getElementById("filterSubject").value;
+    
+    const videoCards = document.querySelectorAll(".video-card");
+
+    videoCards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const grade = card.getAttribute("data-grade");
+        const subject = card.getAttribute("data-subject");
+
+        const matchesSearch = title.includes(searchQuery);
+        const matchesGrade = (gradeFilter === "all" || grade === gradeFilter);
+        const matchesSubject = (subjectFilter === "all" || subject === subjectFilter);
+
+        if (matchesSearch && matchesGrade && matchesSubject) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+</script>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <a href="index.html" class="back-home-btn">🏠 Home</a>
+
+</head>
+<body class="bg-gray-900 text-white p-5">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-5">Book Store</h1>
+        
+        <!-- Search & Filters -->
+        <div class="flex gap-3 mb-5">
+            <input type="text" id="search" placeholder="Search books..." class="w-full p-2 text-black rounded">
+            <select id="gradeFilter" class="p-2 text-black rounded">
+                <option value="">All Grades</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+            </select>
+            <select id="subjectFilter" class="p-2 text-black rounded">
+                <option value="">All Subjects</option>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="English">English</option>
+            </select>
+        </div>
+        
+        <!-- Books Section -->
+        <div id="bookList" class="grid grid-cols-2 gap-4"></div>
+        
+        <!-- PDF Viewer Modal -->
+        <div id="pdfModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden">
+            <div class="bg-white w-full h-full relative">
+                <button id="closeModal" class="absolute top-2 right-2 text-black text-2xl">✖</button>
+                <iframe id="pdfViewer" class="w-full h-full"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const books = [
+            { title: "Math Basics", grade: "1", subject: "Math", pdf: "global.pdf" },
+            { title: "Science Wonders", grade: "1", subject: "Science", pdf: "books/science_wonders.pdf" },
+            { title: "English Grammar", grade: "2", subject: "English", pdf: "books/english_grammar.pdf" },
+            { title: "Algebra Guide", grade: "2", subject: "Math", pdf: "books/algebra_guide.pdf" },
+            { title: "Physics Explained", grade: "3", subject: "Science", pdf: "books/physics_explained.pdf" },
+            { title: "Literature Insights", grade: "3", subject: "English", pdf: "books/literature_insights.pdf" },
+            { title: "Geometry Skills", grade: "1", subject: "Math", pdf: "books/geometry_skills.pdf" },
+            { title: "Biology Facts", grade: "2", subject: "Science", pdf: "books/biology_facts.pdf" },
+            { title: "Reading Adventures", grade: "3", subject: "English", pdf: "books/reading_adventures.pdf" },
+            { title: "Trigonometry Tips", grade: "3", subject: "Math", pdf: "books/trigonometry_tips.pdf" },
+            { title: "global trend ", grade: "0", subject: "science", pdf: "global.pdf" },
+        ];
+
+        function displayBooks(filteredBooks) {
+            const bookList = document.getElementById("bookList");
+            bookList.innerHTML = "";
+            filteredBooks.forEach(book => {
+                bookList.innerHTML += `<div class='bg-gray-800 p-4 rounded shadow'>
+                    <h2 class='text-xl font-bold'>${book.title}</h2>
+                    <p>Grade: ${book.grade}</p>
+                    <p>Subject: ${book.subject}</p>
+                    <div class='mt-2'>
+                        <button onclick="openPDF('${book.pdf}')" class='bg-blue-500 text-white px-3 py-1 rounded'>Read</button>
+                        <a href="${book.pdf}" download class='bg-green-500 text-white px-3 py-1 rounded ml-2'>Download</a>
+                        <button onclick="shareBook('${book.pdf}')" class='bg-purple-500 text-white px-3 py-1 rounded ml-2'>Share</button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function filterBooks() {
+            const search = document.getElementById("search").value.toLowerCase();
+            const grade = document.getElementById("gradeFilter").value;
+            const subject = document.getElementById("subjectFilter").value;
+
+            const filteredBooks = books.filter(book => 
+                (book.title.toLowerCase().includes(search)) &&
+                (grade === "" || book.grade === grade) &&
+                (subject === "" || book.subject === subject)
+            );
+            displayBooks(filteredBooks);
+        }
+
+        function openPDF(pdfUrl) {
+            document.getElementById("pdfViewer").src = pdfUrl;
+            document.getElementById("pdfModal").classList.remove("hidden");
+        }
+
+        function shareBook(pdfUrl) {
+            navigator.clipboard.writeText(window.location.origin + '/' + pdfUrl)
+                .then(() => alert("Book link copied to clipboard!"))
+                .catch(() => alert("Failed to copy link."));
+        }
+
+        document.getElementById("search").addEventListener("input", filterBooks);
+        document.getElementById("gradeFilter").addEventListener("change", filterBooks);
+        document.getElementById("subjectFilter").addEventListener("change", filterBooks);
+        document.getElementById("closeModal").addEventListener("click", () => {
+            document.getElementById("pdfModal").classList.add("hidden");
+            document.getElementById("pdfViewer").src = "";
+        });
+        
+        displayBooks(books);
+    </script>
+</body>
+</html>
+<style>
+    /* Back to Home Button */
+.back-home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #2901f2;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.back-home-btn:hover {
+    background-color: #ff3d00;
+    transform: scale(1.1);
+}
+</style>

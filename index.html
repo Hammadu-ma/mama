@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Navbar</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">📖 My Library</div>
+
+        <nav class="nav-links">
+            <a href="book.html">📚 Books</a>
+            <a href="videolibrary.html">🎥 Videos</a>
+            <a href="BLOG.HTML">📢 Announcements</a>
+            <a href="community.html">👨‍🎓 Community</a>
+        </nav>
+
+        <div class="right-section">
+            <input type="text" class="search-bar" placeholder="🔍 Search...">
+            <button id="theme-toggle">🌙</button>
+            <button class="login-btn">🎟️ Login / Register</button>
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#books">📚 Books</a>
+        <a href="#videos">🎥 Videos</a>
+        <a href="#announcements">📢 Announcements</a>
+        <a href="#community">👨‍🎓 Community</a>
+        <button class="login-btn">🎟️ Login / Register</button>
+    </div>
+  <style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Light/Dark Theme Variables */
+:root {
+    --bg-color: white;
+    --text-color: black;
+    --btn-bg: #007bff;
+    --btn-text: white;
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: white;
+    --btn-bg: #ff9800;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--btn-bg);
+}
+
+/* Right Section */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Search Bar */
+.search-bar {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Buttons */
+button {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Menu Button (Mobile) */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    color: var(--text-color);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-color);
+    position: absolute;
+    top: 87px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.mobile-menu a {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.mobile-menu a:hover {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+}
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const menuToggleBtn = document.querySelector(".menu-toggle");
+
+    // Theme Toggle Function
+    themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        themeToggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+
+    // Mobile Menu Toggle
+    menuToggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("show");
+    });
+});
+  </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- Developer Sidebar -->
+    <aside class="dev-sidebar">
+        <button class="sidebar-toggle">☰</button>
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <img src="your-photo.jpg" alt="Hamad Hassen">
+            <h2>Hamad Hassen</h2>
+            <p>Web Developer & Tech Enthusiast</p>
+        </div>
+
+        <!-- Sidebar Buttons -->
+        <div class="sidebar-menu">
+            <a href="mailto:hammadhassen3@gmail.com" class="btn">📩 Contact Developer</a>
+            <a href="sites.html" class="btn">🌐 Another Sites</a>
+            <a href="chat.html" class="btn">💬 Ask a Question</a>
+            <a href="chat.html" class="btn">🛠️ Get a Website Made</a>
+            <a href="chat.html" class="btn">📚 Buy Reference Books</a>
+            <a href="about.html" class="btn">ℹ️ About Me</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to <span>High School Library</span></h1>
+                <p>Explore a vast collection of books and video lessons designed for Ethiopian students (Grades 9-12).</p>
+                <a href="#explore" class="cta-button">Explore Now</a>
+            </div>
+        </section>
+
+        <!-- Featured Books -->
+        <section class="featured-books" id="explore">
+            <h2>Featured Books</h2>
+            <div class="book-list">
+                <div class="book-card">
+                    <img src="book1.jpg" alt="Book 1">
+                    <h3>Book Title 1</h3>
+                    <p>A brief description of the book.</p>
+                </div>
+                <div class="book-card">
+                    <img src="book2.jpg" alt="Book 2">
+                    <h3>Book Title 2</h3>
+                    <p>A brief description of the book.</p>
+                </div>
+                <div class="book-card">
+                    <img src="book3.jpg" alt="Book 3">
+                    <h3>Book Title 3</h3>
+                    <p>A brief description of the book.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <h2>Explore Categories</h2>
+            <div class="category-list">
+                <div class="category-card">
+                    <h3>Math</h3>
+                    <p>Explore textbooks and resources on mathematics.</p>
+                </div>
+                <div class="category-card">
+                    <h3>Science</h3>
+                    <p>Explore textbooks and resources on science.</p>
+                </div>
+                <div class="category-card">
+                    <h3>History</h3>
+                    <p>Explore textbooks and resources on history.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 High School Library | All Rights Reserved</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+<style>
+    /* General Styles */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --btn-bg: #6f09f4;
+    --btn-text: #fff;
+    --sidebar-bg: #ffffff;
+    --sidebar-text: #000000;
+}
+
+
+main {
+    flex: 1;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #f0b521, #c54d4d, #9CECFB);
+    color: white;
+    min-height: 100vh;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero-content span {
+    color: yellow;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background: #0056b3;
+}
+
+/* Featured Books */
+.featured-books {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: white;
+    --btn-bg: #ff9800;
+}
+.featured-books h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.book-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.book-card {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.book-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.book-card h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.book-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Categories */
+.categories {
+    padding: 50px 20px;
+    background-color: #f0f4f8;
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.category-card {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Contact Form */
+.contact-form {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-links a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+footer .social-links a:hover {
+    color: #ff8418;
+}
+
+/* Developer Sidebar */
+.dev-sidebar {
+    width: 280px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding-top: 20px;
+    position: fixed;
+    left: -280px;
+    transition: 0.3s ease-in-out;
+    text-align: center;
+    
+}
+.sidebar {
+    width: 250px;  /* Fixed width */
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    overflow-y: auto; /* Enables scrolling if content overflows */
+    box-sizing: border-box; /* Prevents padding from affecting height */
+}
+
+
+/* Sidebar Profile Section */
+.profile {
+    padding: 20px;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-bottom: 10px;
+}
+
+.profile h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.profile p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Sidebar Buttons */
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.btn {
+    display: block;
+    padding: 12px;
+    margin: 5px 15px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff0000;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: absolute;
+    top: 15px;
+    right: -40px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Show Sidebar */
+.dev-sidebar.active {
+    left: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .dev-sidebar {
+        width: 250px;
+    }
+
+    .sidebar-toggle {
+        right: -35px;
+    }
+}
+
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.querySelector(".dev-sidebar");
+    const toggleButton = document.querySelector(".sidebar-toggle");
+
+    toggleButton.addEventListener("click", function() {
+        sidebar.classList.toggle("active");
+    });
+});
+
+</script>

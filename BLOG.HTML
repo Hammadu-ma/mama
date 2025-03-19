@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blog Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .post h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .post p {
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        .post small {
+            color: #888;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>All Blog Posts</h1>
+        <div id="post-list"></div>
+
+        <div class="back-home">
+            <a href="blog-post.html">Write a New Post</a>
+        </div>
+    </div>
+
+    <script>
+        function loadPosts() {
+            let posts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+            let postList = document.getElementById("post-list");
+
+            if (posts.length === 0) {
+                postList.innerHTML = "<p>No posts available.</p>";
+                return;
+            }
+
+            posts.reverse().forEach(post => {
+                let postElement = document.createElement("div");
+                postElement.classList.add("post");
+                postElement.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <small>Posted on: ${post.date}</small>
+                `;
+                postList.appendChild(postElement);
+            });
+        }
+
+        loadPosts();
+    </script>
+
+</body>
+</html>

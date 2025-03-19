@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>videos Store</title>
+    <a href="index.html" class="back-home-btn">🏠 Home</a>
+    <a href="videos.html" class="offline-btn">upload</a>
+</head>
+<section id="video-section" class="video-section">
+    <div class="video-header">
+        <h2>Our Videos</h2>
+        <div class="filters">
+            <select id="grade-filter" class="filter">
+                <option value="">Select Grade</option>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3">Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+            </select>
+            <select id="subject-filter" class="filter">
+                <option value="">Select Subject</option>
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="English">English</option>
+            </select>
+            <input type="text" id="search" class="search-bar" placeholder="Search videos by title...">
+        </div>
+    </div>
+    
+    <div id="video-grid" class="video-grid">
+        <!-- Video 1: YouTube -->
+        <div class="video-card" data-grade="Grade 1" data-subject="Math">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Math Introduction - Grade 1</h3>
+        </div>
+        
+        <!-- Video 2: Vimeo -->
+        <div class="video-card" data-grade="Grade 2" data-subject="Science">
+            <iframe src="https://player.vimeo.com/video/76979871" width="320" height="180" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Science Basics - Grade 2</h3>
+        </div>
+
+        <!-- Video 3: MP4 File -->
+        <div class="video-card" data-grade="Grade 3" data-subject="History">
+            <video width="320" height="180" controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>History of Ancient Civilizations - Grade 3</h3>
+        </div>
+
+        <!-- Video 4: YouTube -->
+        <div class="video-card" data-grade="Grade 4" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Exploring Continents - Grade 4</h3>
+        </div>
+
+        <!-- Video 5: Vimeo -->
+        <div class="video-card" data-grade="Grade 5" data-subject="Math">
+            <iframe src="https://player.vimeo.com/video/148751763" width="320" height="180" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Multiplication and Division - Grade 5</h3>
+        </div>
+
+        <!-- Video 6: MP4 File -->
+        <div class="video-card" data-grade="Grade 6" data-subject="Science">
+            <video width="320" height="180" controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Introduction to Physics - Grade 6</h3>
+        </div>
+
+        <!-- Video 7: YouTube -->
+        <div class="video-card" data-grade="Grade 2" data-subject="English">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>Basic English Grammar - Grade 2</h3>
+        </div>
+
+        <!-- Video 8: Vimeo -->
+        <div class="video-card" data-grade="Grade 4" data-subject="Math">
+            <iframe src="https://player.vimeo.com/video/107097939" width="320" height="180" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Advanced Addition and Subtraction - Grade 4</h3>
+        </div>
+
+        <!-- Video 9: MP4 File -->
+        <div class="video-card" data-grade="Grade 5" data-subject="History">
+            <video width="320" height="180" controls>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>The Industrial Revolution - Grade 5</h3>
+        </div>
+
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div><!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div><!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+
+
+
+
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+    <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3>World Map Overview - Grade 3</h3>
+    </div>
+    <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+
+        <!-- Video 10: YouTube -->
+        <div class="video-card" data-grade="Grade 3" data-subject="Geography">
+            <iframe width="320" height="180" src="https://www.youtube.com/embed/oHg5SJYRHA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3>World Map Overview - Grade 3</h3>
+        </div>
+        
+    </div>
+</section>
+
+<style>
+   /* Dark Theme */
+body {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Video Section */
+.video-section {
+    padding: 50px 20px;
+    text-align: center;
+    min-height: 100vh; /* Ensure it fills the screen height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Video Header */
+.video-header h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+/* Back to Home Button */
+.back-home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #0236f1;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.back-home-btn:hover {
+    background-color: #ff3d00;
+    transform: scale(1.1);
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filter, .search-bar {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Video Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Video Card */
+.video-card {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.video-card iframe, 
+.video-card video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Video Card Hover Effect */
+.video-card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter, .search-bar {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .filters {
+        gap: 5px;
+    }
+
+    .video-card {
+        padding: 15px;
+    }
+}
+
+/* Back to Home Button */
+.offline-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #0236f1;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.offline-btn:hover {
+    background-color: #c500b4;
+    transform: scale(1.1);
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the video grid and filter elements
+    const videoGrid = document.getElementById("video-grid");
+    const gradeFilter = document.getElementById("grade-filter");
+    const subjectFilter = document.getElementById("subject-filter");
+    const searchInput = document.getElementById("search");
+
+    // Event listener for filters and search input
+    gradeFilter.addEventListener("change", filterVideos);
+    subjectFilter.addEventListener("change", filterVideos);
+    searchInput.addEventListener("input", filterVideos);
+
+    function filterVideos() {
+        const grade = gradeFilter.value.toLowerCase();
+        const subject = subjectFilter.value.toLowerCase();
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Loop through all video cards and check if they match the filters/search query
+        const videoCards = videoGrid.getElementsByClassName("video-card");
+        Array.from(videoCards).forEach(card => {
+            const cardGrade = card.getAttribute("data-grade").toLowerCase();
+            const cardSubject = card.getAttribute("data-subject").toLowerCase();
+            const cardTitle = card.querySelector("h3").textContent.toLowerCase();
+
+            // Check if video matches grade, subject, and search query
+            const matchesGrade = grade === "" || cardGrade.includes(grade);
+            const matchesSubject = subject === "" || cardSubject.includes(subject);
+            const matchesSearch = cardTitle.includes(searchQuery);
+
+            // Show or hide the video card based on matches
+            if (matchesGrade && matchesSubject && matchesSearch) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+});
+
+</script>

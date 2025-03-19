@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Write a Blog Post</h1>
+        <input type="text" id="title" placeholder="Enter Post Title">
+        <textarea id="content" rows="5" placeholder="Write your blog post here..."></textarea>
+        <button onclick="savePost()">Save Post</button>
+
+        <div class="back-home">
+            <a href="blog-display.html">View All Posts</a>
+        </div>
+    </div>
+
+    <script>
+        function savePost() {
+            let title = document.getElementById("title").value;
+            let content = document.getElementById("content").value;
+
+            if (title.trim() === "" || content.trim() === "") {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            let posts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+            posts.push({ title, content, date: new Date().toLocaleString() });
+            localStorage.setItem("blogPosts", JSON.stringify(posts));
+
+            alert("Post saved successfully!");
+            document.getElementById("title").value = "";
+            document.getElementById("content").value = "";
+        }
+    </script>
+
+</body>
+</html>
