@@ -3,93 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Blog Posts</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f4f4f4;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .post {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
-        }
-
-        .post h2 {
-            margin: 0;
-            color: #333;
-        }
-
-        .post p {
-            margin: 10px 0 5px;
-            color: #555;
-        }
-
-        .post small {
-            color: #888;
-        }
-
-        .back-home {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .back-home a {
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
+    <title>Library Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
-<body>
+<body class="light-theme">
+    <header>
+        <h1>📚 Ethiopian High School Library Blog</h1>
+        <button id="theme-toggle">🌙 Dark Mode</button>
+    </header>
 
-    <div class="container">
-        <h1>All Blog Posts</h1>
-        <div id="post-list"></div>
-
-        <div class="back-home">
-            <a href="blog-post.html">Write a New Post</a>
+    <!-- Featured Blog Post -->
+    <section class="featured">
+        <img src="https://via.placeholder.com/800x400" alt="Featured Blog">
+        <div class="featured-content">
+            <h2>📖 How to Improve Your Study Habits</h2>
+            <p>Discover top strategies to enhance your focus and retention for exams.</p>
+            <a href="#" class="read-more">Read More →</a>
         </div>
-    </div>
+    </section>
 
-    <script>
-        function loadPosts() {
-            let posts = JSON.parse(localStorage.getItem("blogPosts")) || [];
-            let postList = document.getElementById("post-list");
+    <!-- Latest Blog Posts -->
+    <section class="latest">
+        <h2>📰 Latest Articles</h2>
+        <div class="posts">
+            <!-- Image Post -->
+            <article class="post">
+                <img src="https://via.placeholder.com/400" alt="Book Image">
+                <h3>📖 Top 5 Books for High School Students</h3>
+                <p>Explore must-read books to improve your knowledge and critical thinking.</p>
+                <a href="#">Read More</a>
+            </article>
 
-            if (posts.length === 0) {
-                postList.innerHTML = "<p>No posts available.</p>";
-                return;
-            }
+            <!-- Video Post -->
+            <article class="post">
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>🎥 How to Prepare for Final Exams</h3>
+                <p>Learn effective techniques to prepare and score high in your exams.</p>
+                <a href="#">Watch Now</a>
+            </article>
 
-            posts.reverse().forEach(post => {
-                let postElement = document.createElement("div");
-                postElement.classList.add("post");
-                postElement.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p>${post.content}</p>
-                    <small>Posted on: ${post.date}</small>
-                `;
-                postList.appendChild(postElement);
-            });
-        }
+            <!-- Image Post -->
+            <article class="post">
+                <img src="https://via.placeholder.com/400" alt="Technology Image">
+                <h3>💻 Using Technology for Better Learning</h3>
+                <p>Find out how digital tools can improve your study experience.</p>
+                <a href="#">Read More</a>
+            </article>
+        </div>
+    </section>
 
-        loadPosts();
-    </script>
-
+    <footer>
+        <p>© 2025 Ethiopian High School Library. All rights reserved.</p>
+    </footer>
 </body>
 </html>
+
+<style>
+   /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Light Theme */
+.light-theme {
+    background: #ffffff;
+    color: #222;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background: #121212;
+    color: #f1f1f1;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #0077cc;
+    color: white;
+}
+
+#theme-toggle {
+    padding: 10px;
+    border: none;
+    background: white;
+    color: #0077cc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#theme-toggle:hover {
+    background: #ddd;
+}
+
+/* Featured Section */
+.featured {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.featured img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.featured-content {
+    padding: 20px;
+}
+
+/* Latest Posts */
+.latest {
+    padding: 20px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.post:hover {
+    transform: scale(1.05);
+}
+
+.post img, .post video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.post a {
+    display: block;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Dark Theme Adjustments */
+.dark-theme .featured {
+    background: #333;
+}
+
+.dark-theme .post {
+    background: #222;
+}
+
+.dark-theme .post a {
+    color: #1e90ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .posts {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #0077cc;
+    color: white;
+    margin-top: 20px;
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // Load saved theme from local storage
+    if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-theme");
+        themeToggle.textContent = "☀️ Light Mode";
+    }
+
+    // Theme toggle button event
+    themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-theme");
+
+        if (body.classList.contains("dark-theme")) {
+            localStorage.setItem("theme", "dark");
+            themeToggle.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            themeToggle.textContent = "🌙 Dark Mode";
+        }
+    });
+});
+
+
+</script>
