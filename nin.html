@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHERE TECHNOLOGY - Services & Repairs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --dark-bg: #0f172a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--light);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.dark-mode header {
+            background-color: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode nav ul li a {
+            color: var(--light);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons a {
+            margin-left: 1.5rem;
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .header-icons a {
+            color: var(--light);
+        }
+
+        .header-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+        }
+
+        .search-box.active {
+            display: block;
+        }
+
+        .search-box input {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--gray);
+            outline: none;
+            width: 200px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 1.5rem;
+            color: var(--dark);
+        }
+
+        body.dark-mode .theme-toggle {
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        .service-hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0d9488;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .section-title p {
+            color: #cbd5e1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        body.dark-mode .service-card {
+            background-color: #1e293b;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-info {
+            padding: 1.5rem;
+        }
+
+        .service-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-info p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .service-info p {
+            color: #cbd5e1;
+        }
+
+        .service-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* How It Works Section */
+        .steps-container {
+            background-color: #f1f5f9;
+            padding: 5rem 5%;
+        }
+
+        body.dark-mode .steps-container {
+            background-color: #1e293b;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -50px;
+            width: 100px;
+            height: 2px;
+            background-color: var(--primary);
+            display: none;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .step p {
+            color: #cbd5e1;
+        }
+
+        /* Telegram Bot Section */
+        .telegram-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 5rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+
+        .telegram-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .telegram-step {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .telegram-step:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .telegram-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .telegram-step h3 i {
+            margin-right: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .telegram-step p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .feature-content p {
+            color: #cbd5e1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f1f5f9;
+            padding: 5rem 5%;
+        }
+
+        body.dark-mode .testimonials {
+            background-color: #1e293b;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            text-align: center;
+        }
+
+        body.dark-mode .testimonial-card {
+            background-color: #334155;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-rating {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #cbd5e1;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 5%;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .faq-item {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-question {
+            background-color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .faq-question {
+            background-color: #1e293b;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f5f9;
+        }
+
+        body.dark-mode .faq-question:hover {
+            background-color: #334155;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            background-color: #f8fafc;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        body.dark-mode .faq-answer {
+            background-color: #0f172a;
+        }
+
+        .faq-answer p {
+            padding: 1.5rem 0;
+            color: var(--gray);
+        }
+
+        body.dark-mode .faq-answer p {
+            color: #cbd5e1;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .final-cta .cta-buttons {
+            position: relative;
+        }
+
+        .arrow-animation {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .newsletter p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+        }
+
+        /* Booking Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group select,
+        body.dark-mode .form-group textarea {
+            background-color: #1e293b;
+            border-color: #334155;
+            color: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .chat-options {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 200px;
+        }
+
+        body.dark-mode .chat-options {
+            background-color: #1e293b;
+        }
+
+        .chat-options.active {
+            display: flex;
+        }
+
+        .chat-option {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        body.dark-mode .chat-option {
+            color: white;
+        }
+
+        .chat-option:hover {
+            background-color: #f1f5f9;
+        }
+
+        body.dark-mode .chat-option:hover {
+            background-color: #334155;
+        }
+
+        .chat-option i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp {
+            color: #25D366;
+        }
+
+        .telegram {
+            color: #0088cc;
+        }
+
+        .messenger {
+            color: #006AFF;
+        }
+
+        /* Stats Counter */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            body.dark-mode nav {
+                background-color: var(--dark-bg);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .service-hero {
+                margin-top: 60px;
+                height: auto;
+                padding: 5rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .step {
+                margin-bottom: 2rem;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .final-cta {
+                padding: 3rem 1rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Glow Effect */
+        .glow {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Telegram Bot Animation */
+        .telegram-bot-animation {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: url('https://telegram.org/img/t_logo.png') no-repeat center center/contain;
+        }
+
+        .telegram-bot-animation::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid #0088cc;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Technician Tracking */
+        .tracking-container {
+            margin-top: 2rem;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        body.dark-mode .tracking-container {
+            background-color: #1e293b;
+        }
+
+        .tracking-map {
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tracking-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tracking-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .tracking-info {
+            text-align: left;
+        }
+
+        .tracking-info h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-info p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .tracking-info p {
+            color: #cbd5e1;
+        }
+
+        .tracking-eta {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fas fa-laptop-code"></i> WHERE TECHNOLOGY
+        </a>
+        
+        <nav id="mainNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" class="active">Services</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-icons">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+            </div>
+            <a href="#" id="searchBtn"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="hero-content">
+            <h1>Expert Tech Repair & Installation – At Your Doorstep!</h1>
+            <p>Fast, affordable, and reliable service across Ethiopia.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary" id="bookServiceBtn">Book a Service</a>
+                <a href="#" class="btn btn-secondary">Live Chat Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>We offer comprehensive tech solutions to meet all your repair and installation needs.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Phone Repair -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1567&q=80" alt="Phone Repair">
+                </div>
+                <div class="service-info">
+                    <h3>Phone Repair</h3>
+                    <p>Screen replacement, battery issues, water damage, and more for all smartphone brands.</p>
+                    <div class="service-price">Starting from ETB 500</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="Phone Repair">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Laptop Repair -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Laptop Repair">
+                </div>
+                <div class="service-info">
+                    <h3>Laptop & Computer Repair</h3>
+                    <p>Hardware and software issues for all laptop and computer brands.</p>
+                    <div class="service-price">Starting from ETB 800</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="Laptop Repair">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- TV & Appliance -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="TV Repair">
+                </div>
+                <div class="service-info">
+                    <h3>TV & Home Appliance</h3>
+                    <p>Installation and repair services for TVs and home appliances.</p>
+                    <div class="service-price">Starting from ETB 1000</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="TV Repair">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Smart Home -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Smart Home">
+                </div>
+                <div class="service-info">
+                    <h3>Smart Home Setup</h3>
+                    <p>Automation and smart home solutions for modern living.</p>
+                    <div class="service-price">Starting from ETB 2000</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="Smart Home">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Security Cameras -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1585128790751-23a1b477d992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Security Cameras">
+                </div>
+                <div class="service-info">
+                    <h3>Security Camera Installation</h3>
+                    <p>Professional installation of security camera systems for homes and businesses.</p>
+                    <div class="service-price">Starting from ETB 2500</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="Security Cameras">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Network Setup -->
+            <div class="service-card card-3d">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Network Setup">
+                </div>
+                <div class="service-info">
+                    <h3>Network Setup</h3>
+                    <p>Home and office network installation and troubleshooting.</p>
+                    <div class="service-price">Starting from ETB 1500</div>
+                    <a href="#" class="btn btn-primary book-service" data-service="Network Setup">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="steps-container">
+        <div class="section">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Getting your tech fixed has never been easier with our simple 3-step process.</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select a Service</h3>
+                    <p>Choose the type of repair or installation you need and provide basic details about your device.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Confirm & Pay via Telegram</h3>
+                    <p>Our Telegram bot will send you a confirmation with payment options. Pay securely and upload your receipt.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Technician Arrives</h3>
+                    <p>Our certified technician will arrive at your location with all necessary tools to complete the service.</p>
+                </div>
+            </div>
+            
+            <div class="tracking-container">
+                <h3>Real-Time Technician Tracking</h3>
+                <p>Track your technician's location and estimated arrival time once they're dispatched.</p>
+                <div class="tracking-map">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Addis+Ababa&zoom=12&size=600x300&maptype=roadmap&markers=color:red%7C9.005401,38.763611&key=YOUR_API_KEY" alt="Technician Location">
+                </div>
+                <div class="tracking-details">
+                    <div class="tracking-info">
+                        <h4>Technician: Alemayehu K.</h4>
+                        <p>Currently en route to your location</p>
+                    </div>
+                    <div class="tracking-eta">ETA: 25 min</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram Bot Section -->
+    <section class="telegram-section">
+        <div class="section">
+            <div class="section-title">
+                <h2>Seamless Booking & Payment via Telegram</h2>
+                <p>Our Telegram bot makes booking and paying for services quick and secure.</p>
+            </div>
+            
+            <div class="telegram-steps">
+                <div class="telegram-step">
+                    <h3><i class="fab fa-telegram"></i> Book Service</h3>
+                    <p>Fill our simple booking form and receive instant confirmation on Telegram with service details and pricing.</p>
+                </div>
+                
+                <div class="telegram-step">
+                    <h3><i class="fas fa-money-bill-wave"></i> Make Payment</h3>
+                    <p>Pay securely via Telebirr, CBE Birr, or other local payment methods. Simply upload your receipt in the chat.</p>
+                </div>
+                
+                <div class="telegram-step">
+                    <h3><i class="fas fa-user-cog"></i> Technician Assigned</h3>
+                    <p>Our system automatically assigns the nearest available technician and provides real-time updates.</p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="https://t.me/WhereTechBot" class="btn btn-secondary" style="background-color: #0088cc;">Open Telegram Bot</a>
+            </div>
+            
+            <div class="telegram-bot-animation"></div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Why Choose WHERE TECHNOLOGY?</h2>
+            <p>We go above and beyond to provide the best service experience.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Fast & Reliable</h3>
+                    <p>Same-day service available in major cities with our network of skilled technicians.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Affordable Pricing</h3>
+                    <p>Competitive prices with no hidden costs. We provide upfront pricing before you book.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Nationwide Coverage</h3>
+                    <p>Technicians available in all major Ethiopian cities and expanding to more locations.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Warranty Guarantee</h3>
+                    <p>All our repairs come with a warranty for your peace of mind.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Repairs This Month</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Customer Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from our satisfied customers about their experiences with our services.</p>
+            </div>
+            
+            <div class="testimonial-slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="testimonial-avatar">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"The technician arrived right on time and fixed my laptop in under an hour. The Telegram payment system was so convenient!"</p>
+                            <div class="testimonial-author">- Sarah M., Addis Ababa</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="testimonial-avatar">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"I was impressed with the smart home installation. The technician explained everything clearly and the Telegram bot made tracking so easy."</p>
+                            <div class="testimonial-author">- Daniel K., Dire Dawa</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="testimonial-avatar">
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="testimonial-text">"My phone screen was replaced quickly and affordably. The payment via Telegram was secure and I got my invoice immediately."</p>
+                            <div class="testimonial-author">- Aisha T., Bahir Dar</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#" class="btn btn-primary">Submit Your Review</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does a typical repair take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most repairs are completed within 1-2 hours at your location. Complex issues may take longer, which our technician will communicate to you upfront.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept Telebirr, CBE Birr, Dashen Bank, and other major mobile payment platforms through our Telegram bot. Cash payments are also accepted on-site.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a warranty on repairs?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our repairs come with a 90-day warranty. If the same issue reoccurs within this period, we'll fix it at no additional cost.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I reschedule my appointment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can reschedule directly through our Telegram bot by replying to your booking confirmation message or by contacting our support team.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide replacement parts?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we use high-quality replacement parts for all repairs. You'll receive details about the parts and their warranty before installation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <h2>Need a Repair or Installation? Let Our Experts Help You!</h2>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Book a Service</a>
+            <a href="#" class="btn btn-secondary">Chat with Support</a>
+        </div>
+        <div class="arrow-animation">
+            <i class="fas fa-arrow-down" style="font-size: 2rem; color: white;"></i>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="index.html" class="footer-logo">
+                    <i class="fas fa-laptop-code"></i> WHERE TECHNOLOGY
+                </a>
+                <p>Your trusted partner for all tech solutions in Ethiopia. Repair, shop, and upgrade with confidence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Phone Repair</a></li>
+                    <li><a href="#">Laptop Repair</a></li>
+                    <li><a href="#">TV Installation</a></li>
+                    <li><a href="#">Smart Home Setup</a></li>
+                    <li><a href="#">Security Cameras</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest tech updates and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 WHERE TECHNOLOGY. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <i class="fas fa-comment-dots"></i>
+        <div class="chat-options" id="chatOptions">
+            <a href="#" class="chat-option"><i class="fab fa-whatsapp whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/WhereTechBot" class="chat-option"><i class="fab fa-telegram telegram"></i> Telegram</a>
+            <a href="#" class="chat-option"><i class="fab fa-facebook-messenger messenger"></i> Messenger</a>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title">Book a Service</h2>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="serviceType">Service Type</label>
+                    <select id="serviceType" required>
+                        <option value="">Select a service</option>
+                        <option value="Phone Repair">Phone Repair</option>
+                        <option value="Laptop Repair">Laptop & Computer Repair</option>
+                        <option value="TV Repair">TV & Appliance Installation</option>
+                        <option value="Smart Home">Smart Home Setup</option>
+                        <option value="Security Cameras">Security Camera Installation</option>
+                        <option value="Network Setup">Network Setup</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deviceType">Device Type/Brand</label>
+                    <input type="text" id="deviceType" placeholder="e.g., iPhone 12, Samsung TV" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="issueDescription">Issue Description</label>
+                    <textarea id="issueDescription" placeholder="Describe the problem you're experiencing" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerName">Your Name</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" placeholder="+251..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerLocation">Location</label>
+                    <input type="text" id="customerLocation" placeholder="Your address or neighborhood" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Date & Time</label>
+                    <input type="datetime-local" id="preferredDate" required>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="cancelBooking">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Proceed to Telegram</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Chat Button Toggle
+        const chatButton = document.getElementById('chatButton');
+        const chatOptions = document.getElementById('chatOptions');
+        
+        chatButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            chatOptions.classList.toggle('active');
+        });
+
+        // Close chat options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!chatButton.contains(e.target) && !chatOptions.contains(e.target)) {
+                chatOptions.classList.remove('active');
+            }
+        });
+
+        // Booking Modal
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBooking = document.getElementById('cancelBooking');
+        const bookServiceBtn = document.getElementById('bookServiceBtn');
+        const bookServiceButtons = document.querySelectorAll('.book-service');
+        
+        function openBookingModal(serviceType = '') {
+            if (serviceType) {
+                document.getElementById('serviceType').value = serviceType;
+            }
+            bookingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeBookingModal() {
+            bookingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        bookServiceBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openBookingModal();
+        });
+        
+        bookServiceButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceType = button.getAttribute('data-service');
+                openBookingModal(serviceType);
+            });
+        });
+        
+        closeModal.addEventListener('click', closeBookingModal);
+        cancelBooking.addEventListener('click', closeBookingModal);
+        
+        // Close modal when clicking outside
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                closeBookingModal();
+            }
+        });
+
+        // Booking Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                serviceType: document.getElementById('serviceType').value,
+                deviceType: document.getElementById('deviceType').value,
+                issueDescription: document.getElementById('issueDescription').value,
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerLocation: document.getElementById('customerLocation').value,
+                preferredDate: document.getElementById('preferredDate').value
+            };
+            
+            // Here you would typically send this data to your backend
+            // For this demo, we'll simulate sending to Telegram bot
+            closeBookingModal();
+            
+            // Open Telegram with prefilled message
+            const telegramMessage = `New Service Booking:\n\n` +
+                                   `Service: ${formData.serviceType}\n` +
+                                   `Device: ${formData.deviceType}\n` +
+                                   `Issue: ${formData.issueDescription}\n` +
+                                   `Name: ${formData.customerName}\n` +
+                                   `Phone: ${formData.customerPhone}\n` +
+                                   `Location: ${formData.customerLocation}\n` +
+                                   `Preferred Date: ${formData.preferredDate}`;
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(telegramMessage);
+            window.open(`https://t.me/WhereTechBot?start=${encodedMessage}`, '_blank');
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faqItem => {
+                    if (faqItem !== item) {
+                        faqItem.classList.remove('active');
+                        faqItem.querySelector('.faq-answer').style.maxHeight = null;
+                        faqItem.querySelector('.faq-question').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                    answer.style.maxHeight = null;
+                    question.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Testimonial Slider
+        const testimonialSwiper = new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.testimonial-slider .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // Animated Counter
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        function animateValue(el, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                el.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        function checkIfInView() {
+            statNumbers.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isInView = (rect.top <= window.innerHeight && rect.bottom >= 0);
+                
+                if (isInView && !el.dataset.animated) {
+                    el.dataset.animated = true;
+                    const target = parseInt(el.getAttribute('data-count'));
+                    animateValue(el, 0, target, 2000);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkIfInView);
+        window.addEventListener('load', checkIfInView);
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+
+        // 3D Card Effect
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease';
+                card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+
+        // Telegram Bot Animation
+        const telegramBot = document.querySelector('.telegram-bot-animation');
+        
+        function animateTelegramBot() {
+            telegramBot.style.animation = 'none';
+            void telegramBot.offsetWidth; // Trigger reflow
+            telegramBot.style.animation = 'pulse 2s infinite';
+        }
+        
+        // Animate every 4 seconds
+        setInterval(animateTelegramBot, 4000);
+        animateTelegramBot(); // Initial animation
+    </script>
+</body>
+</html>
