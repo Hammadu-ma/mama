@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Next-Gen Educational Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain exactly the same as in your original */
+        /* ... (paste all the CSS from original here) ... */
+    </style>
+</head>
+<body>
+    <!-- Header remains the same -->
+    <header>
+        <!-- ... (paste header HTML from original) ... -->
+    </header>
+    
+    <main class="main">
+        <!-- Video Grid View -->
+        <div class="video-grid" id="video-grid">
+            <!-- Dynamically populated by JavaScript -->
+        </div>
+        
+        <!-- Video Detail View -->
+        <div class="video-detail" id="video-detail" style="display: none;">
+            <!-- ... (paste video detail HTML from original) ... -->
+        </div>
+    </main>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant" id="ai-assistant">
+        <!-- ... (paste AI panel HTML from original) ... -->
+    </div>
+    
+    <!-- Notes Panel -->
+    <div class="notes-panel" id="notes-panel">
+        <!-- ... (paste notes panel HTML from original) ... -->
+    </div>
+    
+    <!-- Quiz Panel -->
+    <div class="quiz-panel" id="quiz-panel">
+        <!-- ... (paste quiz panel HTML from original) ... -->
+    </div>
+
+    <script>
+        // Fixed JavaScript with all syntax errors corrected
+        const videos = [
+            {
+                id: '1',
+                title: 'Introduction to Algebra: Variables and Expressions',
+                description: 'In this comprehensive lesson, we explore the fundamental concepts of algebraic variables and expressions...',
+                grade: '8',
+                subject: 'math',
+                thumbnail: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                videoUrl: 'https://www.youtube.com/embed/VIDEO_ID_1',
+                views: '125,000 views',
+                duration: '12:45',
+                progress: 25,
+                tags: ['algebra', 'variables', 'expressions', 'beginner'],
+                learningPath: [
+                    { id: '1', title: 'Pre-Algebra Basics', completed: true },
+                    { id: '2', title: 'Variables and Expressions', completed: false, current: true },
+                    { id: '3', title: 'Solving Linear Equations', completed: false }
+                ],
+                quiz: [
+                    {
+                        question: "What is the purpose of variables in algebra?",
+                        options: [
+                            "To represent unknown quantities",
+                            "To make equations look complicated",
+                            "To replace numbers entirely",
+                            "To confuse students"
+                        ],
+                        answer: 0,
+                        explanation: "Variables are used to represent unknown quantities or quantities that can change in value."
+                    }
+                ]
+            },
+            // ... (other video objects remain the same)
+        ];
+
+        // DOM elements
+        const videoGrid = document.getElementById('video-grid');
+        const videoDetail = document.getElementById('video-detail');
+        // ... (all other DOM selectors)
+
+        // Fixed state initialization
+        let currentVideo = null;
+        let likedVideos = JSON.parse(localStorage.getItem('likedVideos')) || [];
+        let bookmarkedVideos = JSON.parse(localStorage.getItem('bookmarkedVideos')) || [];
+        let notes = JSON.parse(localStorage.getItem('videoNotes')) || {};
+        let darkMode = localStorage.getItem('darkMode') === 'true';
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let selectedOption = null;
+
+        // Fixed functions
+        function loadQuizQuestion() {
+            if (!currentQuiz || currentQuestionIndex >= currentQuiz.length) {
+                quizPanel.classList.remove('active');
+                return;
+            }
+            
+            const question = currentQuiz[currentQuestionIndex];
+            quizContent.innerHTML = `
+                <div class="quiz-question">
+                    <h4 class="quiz-question-text">${question.question}</h4>
+                    <div class="quiz-options">
+                        ${question.options.map((option, i) => `
+                            <div class="quiz-option" data-index="${i}">
+                                <div class="option-selector"></div>
+                                <div class="option-text">${option}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${question.explanation ? `
+                        <div class="quiz-explanation" style="display: none;">
+                            <strong>Explanation:</strong> ${question.explanation}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            // Fixed event listeners
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (this.classList.contains('selected')) return;
+                    
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    this.classList.add('selected');
+                    selectedOption = parseInt(this.getAttribute('data-index'));
+                    quizNext.disabled = false;
+                });
+            });
+        }
+
+        // Fixed AI message handler
+        function sendAIMessage() {
+            const message = aiInput.value.trim();
+            if (!message) return;
+            
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user-message';
+            userMsg.textContent = message;
+            aiMessages.appendChild(userMsg);
+            aiInput.value = '';
+            
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message ai-message';
+                
+                // Fixed string interpolation
+                if (message.toLowerCase().includes('summary')) {
+                    aiMsg.innerHTML = `Here's a summary of <strong>${currentVideo.title}</strong>:<br><br>
+                    ${currentVideo.description.substring(0, 200)}...`;
+                }
+                else if (message.toLowerCase().includes('grade') || message.toLowerCase().includes('level')) {
+                    aiMsg.textContent = `This video is appropriate for Grade ${currentVideo.grade} students.`;
+                }
+                // ... (other conditions)
+                
+                aiMessages.appendChild(aiMsg);
+                aiMessages.scrollTop = aiMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Initialize the app
+        function init() {
+            displayVideos(videos);
+            setupEventListeners();
+            checkDarkMode();
+        }
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
