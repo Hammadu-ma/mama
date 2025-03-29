@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHERE TECHNOLOGY - Repair, Shop & Upgrade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --dark-bg: #0f172a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--light);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        body.dark-mode header {
+            background-color: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode nav ul li a {
+            color: var(--light);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons a {
+            margin-left: 1.5rem;
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .header-icons a {
+            color: var(--light);
+        }
+
+        .header-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+        }
+
+        .search-box.active {
+            display: block;
+        }
+
+        .search-box input {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--gray);
+            outline: none;
+            width: 200px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 1.5rem;
+            color: var(--dark);
+        }
+
+        body.dark-mode .theme-toggle {
+            color: var(--light);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0d9488;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .section-title p {
+            color: #cbd5e1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .service-card {
+            background-color: #1e293b;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .service-card p {
+            color: #cbd5e1;
+        }
+
+        /* How It Works Section */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -50px;
+            width: 100px;
+            height: 2px;
+            background-color: var(--primary);
+            display: none;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .step p {
+            color: #cbd5e1;
+        }
+
+        /* Products Section */
+        .products-slider {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .swiper {
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        body.dark-mode .product-card {
+            background-color: #1e293b;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-rating {
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Sustainability Section */
+        .sustainability {
+            background-color: var(--primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sustainability::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f1f5f9;
+        }
+
+        body.dark-mode .testimonials {
+            background-color: #1e293b;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            text-align: center;
+        }
+
+        body.dark-mode .testimonial-card {
+            background-color: #334155;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-rating {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #cbd5e1;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* Why Choose Us Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: var(--gray);
+        }
+
+        body.dark-mode .feature-content p {
+            color: #cbd5e1;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .final-cta .cta-buttons {
+            position: relative;
+        }
+
+        .arrow-animation {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .newsletter p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .chat-options {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 200px;
+        }
+
+        body.dark-mode .chat-options {
+            background-color: #1e293b;
+        }
+
+        .chat-options.active {
+            display: flex;
+        }
+
+        .chat-option {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        body.dark-mode .chat-option {
+            color: white;
+        }
+
+        .chat-option:hover {
+            background-color: #f1f5f9;
+        }
+
+        body.dark-mode .chat-option:hover {
+            background-color: #334155;
+        }
+
+        .chat-option i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp {
+            color: #25D366;
+        }
+
+        .telegram {
+            color: #0088cc;
+        }
+
+        .messenger {
+            color: #006AFF;
+        }
+
+        /* Product Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem;
+        }
+
+        body.dark-mode .modal-content {
+            background-color: var(--dark-bg);
+            color: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-product {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .modal-product-images {
+            position: relative;
+        }
+
+        .main-image {
+            height: 400px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .main-image {
+            background-color: #334155;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: #f1f5f9;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .thumbnail {
+            background-color: #334155;
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-product-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .modal-rating .stars {
+            color: #f59e0b;
+            margin-right: 0.5rem;
+        }
+
+        .modal-rating .reviews {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .modal-rating .reviews {
+            color: #cbd5e1;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-specs {
+            margin-bottom: 2rem;
+        }
+
+        .modal-specs h3 {
+            margin-bottom: 1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+            min-width: 120px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f1f5f9;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.dark-mode .quantity-btn {
+            background-color: #334155;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+            margin: 0 0.2rem;
+        }
+
+        body.dark-mode .quantity-input {
+            background-color: #334155;
+            border-color: #334155;
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .modal-product {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            body.dark-mode nav {
+                background-color: var(--dark-bg);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero {
+                margin-top: 60px;
+                height: auto;
+                padding: 5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .step {
+                margin-bottom: 2rem;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .final-cta {
+                padding: 3rem 1rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .quantity-selector {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Glow Effect */
+        .glow {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+        }
+
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 7rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.5);
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .ai-assistant:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+        }
+
+        .ai-chatbot {
+            position: fixed;
+            bottom: 16rem;
+            right: 2rem;
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        body.dark-mode .ai-chatbot {
+            background-color: var(--dark-bg);
+        }
+
+        .ai-chatbot.active {
+            display: flex;
+        }
+
+        .ai-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header h3 {
+            margin: 0;
+        }
+
+        .close-ai {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            background-color: #f1f5f9;
+            border-radius: 15px 15px 15px 5px;
+            align-self: flex-start;
+        }
+
+        body.dark-mode .bot-message {
+            background-color: #334155;
+        }
+
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px 15px 5px 15px;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .ai-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        body.dark-mode .ai-input {
+            border-top: 1px solid #334155;
+        }
+
+        .ai-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #f1f5f9;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        body.dark-mode .ai-input input {
+            background-color: #334155;
+            border-color: #334155;
+            color: white;
+        }
+
+        .ai-input button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ai-input button:hover {
+            background-color: #0d9488;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-laptop-code"></i> WHERE TECHNOLOGY
+        </a>
+        
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-icons">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+            </div>
+            <a href="#" id="searchBtn"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Tech, Our Expertise – Repair, Shop & Upgrade Hassle-Free</h1>
+            <p>Fast, reliable home-to-home tech solutions across Ethiopia.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Book a Repair</a>
+                <a href="#" class="btn btn-secondary">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>We offer comprehensive tech solutions to meet all your needs, from repairs to smart home installations.</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card card-3d">
+                <div class="service-icon">
+                    <i class="fas fa-tools floating"></i>
+                </div>
+                <h3>Repair & Installation</h3>
+                <p>Expert repair services for all your devices with convenient at-home service or in-store drop-off.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card card-3d">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-house floating"></i>
+                </div>
+                <h3>Online Tech Store</h3>
+                <p>Shop the latest tech gadgets and accessories with easy payment options and fast delivery.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card card-3d">
+                <div class="service-icon">
+                    <i class="fas fa-home-alt floating"></i>
+                </div>
+                <h3>Smart Home Upgrades</h3>
+                <p>Transform your home with our smart home solutions for security, comfort and energy efficiency.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>How It Works</h2>
+            <p>Getting your tech fixed or upgraded has never been easier with our simple 3-step process.</p>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Choose a Service or Product</h3>
+                <p>Select from our range of repair services or browse our online store for the latest tech products.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Schedule & Order</h3>
+                <p>Book an appointment for home service or place your order online with flexible payment options.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Receive Your Service</h3>
+                <p>Our technician arrives at your doorstep or your product gets delivered to your home.</p>
+            </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="#" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="shop">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+            <p>Discover our best-selling tech products and gadgets for your home and office.</p>
+        </div>
+        
+        <div class="products-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Product 1 -->
+                    <div class="swiper-slide">
+                        <div class="product-card card-3d">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Laptop">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <h3 class="product-title">Premium Laptop</h3>
+                                <div class="product-price">ETB 25,999</div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-sm btn-outline view-details" data-id="1">View Details</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="swiper-slide">
+                        <div class="product-card card-3d">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1567&q=80" alt="Smartphone">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <h3 class="product-title">Flagship Smartphone</h3>
+                                <div class="product-price">ETB 18,499</div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-sm btn-outline view-details" data-id="2">View Details</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="swiper-slide">
+                        <div class="product-card card-3d">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Smart Watch">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3 class="product-title">Smart Watch</h3>
+                                <div class="product-price">ETB 7,999</div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-sm btn-outline view-details" data-id="3">View Details</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="swiper-slide">
+                        <div class="product-card card-3d">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wireless Earbuds">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <h3 class="product-title">Wireless Earbuds</h3>
+                                <div class="product-price">ETB 3,499</div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-sm btn-outline view-details" data-id="4">View Details</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="swiper-slide">
+                        <div class="product-card card-3d">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Smart Home Hub">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <h3 class="product-title">Smart Home Hub</h3>
+                                <div class="product-price">ETB 12,999</div>
+                                <div class="product-actions">
+                                    <a href="#" class="btn btn-sm btn-outline view-details" data-id="5">View Details</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-pagination"></div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="section sustainability" id="about">
+        <div class="section-title">
+            <h2>Sustainability & Innovation Commitment</h2>
+            <p>We're dedicated to reducing e-waste and promoting energy-efficient solutions for a greener future.</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" data-count="5000">0</div>
+                <div class="stat-label">Devices Repaired & Saved</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number" data-count="1000">0</div>
+                <div class="stat-label">Smart Homes Upgraded</div>
+            </div>
+            
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Customer Satisfaction</div>
+            </div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="#" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Hear from our satisfied customers about their experiences with WHERE TECHNOLOGY.</p>
+        </div>
+        
+        <div class="testimonial-slider swiper">
+            <div class="swiper-wrapper">
+                <!-- Testimonial 1 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"WHERE TECHNOLOGY saved my laptop when no one else could. Their technician came to my home and fixed the issue in under an hour. Highly recommended!"</p>
+                        <div class="testimonial-author">- Sarah M.</div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The smart home installation was flawless. They explained everything clearly and now my home is more efficient and secure. Great service!"</p>
+                        <div class="testimonial-author">- Daniel K.</div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="testimonial-avatar">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"Ordered a new smartphone and it arrived the next day. The prices are competitive and the customer service is excellent."</p>
+                        <div class="testimonial-author">- Aisha T.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="#" class="btn btn-primary">Read More Reviews</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Why Choose WHERE TECHNOLOGY?</h2>
+            <p>We go above and beyond to provide the best tech solutions and customer experience.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>5,000+ Satisfied Customers</h3>
+                    <p>Join our growing community of happy customers who trust us with their tech needs.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Fast & Reliable Service</h3>
+                    <p>Same-day repairs available in major cities with our network of skilled technicians.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Flexible Payment Options</h3>
+                    <p>Pay with Telebirr, CBE Birr, credit cards, or cash on delivery for your convenience.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Sustainability Commitment</h3>
+                    <p>We recycle and properly dispose of e-waste to protect our environment.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our team is always available to answer your questions and provide assistance.</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Warranty & Guarantee</h3>
+                    <p>All our services and products come with warranty for your peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <h2>Ready to Upgrade, Repair, or Shop? We're Here for You!</h2>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Book a Repair</a>
+            <a href="#" class="btn btn-secondary">Shop Now</a>
+        </div>
+        <div class="arrow-animation">
+            <i class="fas fa-arrow-down" style="font-size: 2rem; color: white;"></i>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="#" class="footer-logo">
+                    <i class="fas fa-laptop-code"></i> WHERE TECHNOLOGY
+                </a>
+                <p>Your trusted partner for all tech solutions in Ethiopia. Repair, shop, and upgrade with confidence.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Device Repair</a></li>
+                    <li><a href="#">Smart Home Installation</a></li>
+                    <li><a href="#">Software Solutions</a></li>
+                    <li><a href="#">Network Setup</a></li>
+                    <li><a href="#">Tech Consultancy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            
+            <div class="newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest tech updates and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 WHERE TECHNOLOGY. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button" id="chatButton">
+        <i class="fas fa-comment-dots"></i>
+        <div class="chat-options" id="chatOptions">
+            <a href="#" class="chat-option"><i class="fab fa-whatsapp whatsapp"></i> WhatsApp</a>
+            <a href="#" class="chat-option"><i class="fab fa-telegram telegram"></i> Telegram</a>
+            <a href="#" class="chat-option"><i class="fab fa-facebook-messenger messenger"></i> Messenger</a>
+        </div>
+    </div>
+
+    <!-- AI Assistant Button -->
+    <div class="ai-assistant" id="aiAssistant">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="ai-chatbot" id="aiChatbot">
+        <div class="ai-header">
+            <h3>Tech Assistant</h3>
+            <button class="close-ai" id="closeAi"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-messages" id="aiMessages">
+            <div class="message bot-message">Hello! I'm your Tech Assistant. How can I help you today?</div>
+        </div>
+        <div class="ai-input">
+            <input type="text" placeholder="Type your message..." id="aiInput">
+            <button id="sendAiMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-product">
+                <div class="modal-product-images">
+                    <div class="main-image">
+                        <img src="" alt="" id="modalMainImage">
+                    </div>
+                    <div class="thumbnail-images" id="thumbnailImages">
+                        <!-- Thumbnails will be added here by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modalProductTitle"></h2>
+                    <div class="modal-rating">
+                        <div class="stars" id="modalRatingStars"></div>
+                        <div class="reviews" id="modalReviews"></div>
+                    </div>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <div class="modal-description" id="modalDescription"></div>
+                    
+                    <div class="modal-specs">
+                        <h3>Specifications</h3>
+                        <div class="specs-grid" id="modalSpecs">
+                            <!-- Specs will be added here by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decreaseQty">-</button>
+                            <input type="number" value="1" min="1" class="quantity-input" id="quantityInput">
+                            <button class="quantity-btn" id="increaseQty">+</button>
+                        </div>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Search Toggle
+        const searchBtn = document.getElementById('searchBtn');
+        const searchBox = document.querySelector('.search-box');
+        
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchBox.classList.toggle('active');
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Chat Button Toggle
+        const chatButton = document.getElementById('chatButton');
+        const chatOptions = document.getElementById('chatOptions');
+        
+        chatButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            chatOptions.classList.toggle('active');
+        });
+
+        // Close chat options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!chatButton.contains(e.target) && !chatOptions.contains(e.target)) {
+                chatOptions.classList.remove('active');
+            }
+        });
+
+        // AI Assistant Toggle
+        const aiAssistant = document.getElementById('aiAssistant');
+        const aiChatbot = document.getElementById('aiChatbot');
+        const closeAi = document.getElementById('closeAi');
+        
+        aiAssistant.addEventListener('click', () => {
+            aiChatbot.classList.toggle('active');
+        });
+        
+        closeAi.addEventListener('click', () => {
+            aiChatbot.classList.remove('active');
+        });
+
+        // AI Chatbot Functionality
+        const aiMessages = document.getElementById('aiMessages');
+        const aiInput = document.getElementById('aiInput');
+        const sendAiMessage = document.getElementById('sendAiMessage');
+        
+        const botResponses = [
+            "Our repair services cover all major brands of laptops, smartphones, and tablets. What device do you need help with?",
+            "For home service, our technicians are available from 8AM to 8PM daily. Would you like to book an appointment?",
+            "We offer same-day repair services in Addis Ababa. Other cities may take 1-2 days depending on location.",
+            "You can track your order by logging into your account or using the tracking number sent to your email.",
+            "Our smart home solutions include security cameras, smart lighting, temperature control, and more. Which area are you interested in?",
+            "For warranty claims, please have your receipt or order number ready and contact our support team."
+        ];
+        
+        function addBotMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot-message';
+            messageDiv.textContent = message;
+            aiMessages.appendChild(messageDiv);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+        
+        function addUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user-message';
+            messageDiv.textContent = message;
+            aiMessages.appendChild(messageDiv);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+        
+        sendAiMessage.addEventListener('click', () => {
+            const message = aiInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                aiInput.value = '';
+                
+                // Simulate bot thinking
+                setTimeout(() => {
+                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                    addBotMessage(randomResponse);
+                }, 1000);
+            }
+        });
+        
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendAiMessage.click();
+            }
+        });
+
+        // Product Slider
+        const productSwiper = new Swiper('.products-slider .swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.products-slider .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                }
+            }
+        });
+
+        // Testimonial Slider
+        const testimonialSwiper = new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.testimonial-slider .swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // Product Modal
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const viewDetailsButtons = document.querySelectorAll('.view-details');
+        
+        // Sample product data
+        const products = {
+            1: {
+                title: "Premium Laptop",
+                price: "ETB 25,999",
+                rating: 4.5,
+                reviews: "42 reviews",
+                description: "Powerful laptop with the latest processor, 16GB RAM, and 512GB SSD for seamless performance in work and entertainment.",
+                specs: {
+                    "Processor": "Intel Core i7 11th Gen",
+                    "RAM": "16GB DDR4",
+                    "Storage": "512GB SSD",
+                    "Display": "15.6\" FHD IPS",
+                    "Graphics": "NVIDIA GeForce MX450",
+                    "Battery": "Up to 10 hours"
+                },
+                images: [
+                    "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80",
+                    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1526&q=80"
+                ]
+            },
+            2: {
+                title: "Flagship Smartphone",
+                price: "ETB 18,499",
+                rating: 4,
+                reviews: "36 reviews",
+                description: "Feature-packed smartphone with professional-grade camera, 128GB storage, and all-day battery life for your mobile needs.",
+                specs: {
+                    "Display": "6.7\" AMOLED 120Hz",
+                    "Processor": "Snapdragon 888",
+                    "RAM": "8GB",
+                    "Storage": "128GB",
+                    "Camera": "108MP + 12MP + 8MP",
+                    "Battery": "5000mAh"
+                },
+                images: [
+                    "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1567&q=80",
+                    "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                    "https://images.unsplash.com/photo-1585060544812-6b45742d762f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ]
+            },
+            3: {
+                title: "Smart Watch",
+                price: "ETB 7,999",
+                rating: 5,
+                reviews: "28 reviews",
+                description: "Stay connected and monitor your health with this advanced smartwatch featuring blood oxygen monitoring and GPS.",
+                specs: {
+                    "Display": "1.78\" AMOLED",
+                    "Battery": "Up to 14 days",
+                    "Features": "Heart rate, SpO2, GPS",
+                    "Water Resistance": "5ATM",
+                    "Compatibility": "Android & iOS",
+                    "Notifications": "Yes"
+                },
+                images: [
+                    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80",
+                    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80"
+                ]
+            },
+            4: {
+                title: "Wireless Earbuds",
+                price: "ETB 3,499",
+                rating: 4.5,
+                reviews: "19 reviews",
+                description: "Premium sound quality with active noise cancellation and comfortable fit for all-day listening pleasure.",
+                specs: {
+                    "Battery Life": "Up to 8 hours",
+                    "Charging Case": "Yes (24h total)",
+                    "Bluetooth": "5.2",
+                    "Noise Cancellation": "Active",
+                    "Water Resistance": "IPX4",
+                    "Microphone": "Built-in"
+                },
+                images: [
+                    "https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"
+                ]
+            },
+            5: {
+                title: "Smart Home Hub",
+                price: "ETB 12,999",
+                rating: 4,
+                reviews: "15 reviews",
+                description: "Central control for all your smart devices with voice assistant integration and energy monitoring features.",
+                specs: {
+                    "Compatibility": "Works with 100+ brands",
+                    "Voice Control": "Built-in",
+                    "Connectivity": "WiFi, Bluetooth, Zigbee",
+                    "Security": "End-to-end encryption",
+                    "Energy Monitoring": "Yes",
+                    "App Control": "iOS & Android"
+                },
+                images: [
+                    "https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ]
+            }
+        };
+
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productId = button.getAttribute('data-id');
+                const product = products[productId];
+                
+                // Set modal content
+                document.getElementById('modalProductTitle').textContent = product.title;
+                document.getElementById('modalPrice').textContent = product.price;
+                document.getElementById('modalDescription').textContent = product.description;
+                
+                // Set rating stars
+                const ratingStars = document.getElementById('modalRatingStars');
+                ratingStars.innerHTML = '';
+                const fullStars = Math.floor(product.rating);
+                const hasHalfStar = product.rating % 1 >= 0.5;
+                
+                for (let i = 0; i < fullStars; i++) {
+                    ratingStars.innerHTML += '<i class="fas fa-star"></i>';
+                }
+                
+                if (hasHalfStar) {
+                    ratingStars.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+                }
+                
+                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                for (let i = 0; i < emptyStars; i++) {
+                    ratingStars.innerHTML += '<i class="far fa-star"></i>';
+                }
+                
+                document.getElementById('modalReviews').textContent = product.reviews;
+                
+                // Set specs
+                const specsGrid = document.getElementById('modalSpecs');
+                specsGrid.innerHTML = '';
+                
+                for (const [key, value] of Object.entries(product.specs)) {
+                    const specItem = document.createElement('div');
+                    specItem.className = 'spec-item';
+                    specItem.innerHTML = `
+                        <div class="spec-label">${key}</div>
+                        <div class="spec-value">${value}</div>
+                    `;
+                    specsGrid.appendChild(specItem);
+                }
+                
+                // Set images
+                const modalMainImage = document.getElementById('modalMainImage');
+                const thumbnailImages = document.getElementById('thumbnailImages');
+                
+                modalMainImage.src = product.images[0];
+                thumbnailImages.innerHTML = '';
+                
+                product.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = 'thumbnail' + (index === 0 ? ' active' : '');
+                    thumbnail.innerHTML = `<img src="${image}" alt="${product.title}">`;
+                    
+                    thumbnail.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        modalMainImage.src = image;
+                        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                        thumbnail.classList.add('active');
+                    });
+                    
+                    thumbnailImages.appendChild(thumbnail);
+                });
+                
+                // Show modal
+                productModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) {
+                productModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Quantity Selector
+        const decreaseQty = document.getElementById('decreaseQty');
+        const increaseQty = document.getElementById('increaseQty');
+        const quantityInput = document.getElementById('quantityInput');
+        
+        decreaseQty.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        increaseQty.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+        });
+
+        // Animated Counter
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        function animateValue(el, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                el.textContent = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        function checkIfInView() {
+            statNumbers.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isInView = (rect.top <= window.innerHeight && rect.bottom >= 0);
+                
+                if (isInView && !el.dataset.animated) {
+                    el.dataset.animated = true;
+                    const target = parseInt(el.getAttribute('data-count'));
+                    animateValue(el, 0, target, 2000);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkIfInView);
+        window.addEventListener('load', checkIfInView);
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+
+        // Parallax Effect
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero) {
+                hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+            }
+        });
+
+        // 3D Card Effect
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease';
+                card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+
+        // Glow Effect
+        document.querySelectorAll('.glow').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.boxShadow = '0 0 20px rgba(37, 99, 235, 0.5)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.boxShadow = 'none';
+            });
+        });
+
+        // Floating WhatsApp Button
+        const whatsappButton = document.createElement('a');
+        whatsappButton.href = 'https://wa.me/251912345678';
+        whatsappButton.className = 'chat-button';
+        whatsappButton.style.right = '8rem';
+        whatsappButton.style.backgroundColor = '#25D366';
+        whatsappButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
+        document.body.appendChild(whatsappButton);
+    </script>
+</body>
+</html>
