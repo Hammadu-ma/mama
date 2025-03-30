@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Pro - Electronics Repair & Retail</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #27ae60;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .products {
+            background-color: #f9f9f9;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: #f5f5f5;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .close-modal:hover {
+            color: var(--danger);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            border: 2px dashed #ddd;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .file-name {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .verification-code {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .verification-code input {
+            width: 40px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .verification-code input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .status-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+            border: 1px solid #2ecc71;
+            display: block;
+        }
+        
+        .error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+            border: 1px solid #e74c3c;
+            display: block;
+        }
+        
+        .payment-steps {
+            display: none;
+        }
+        
+        .payment-step {
+            display: none;
+        }
+        
+        .payment-step.active {
+            display: block;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0.5rem;
+            font-weight: bold;
+        }
+        
+        .step.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .step.completed {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-back {
+            background-color: #ddd;
+            color: #333;
+            margin-right: 1rem;
+        }
+        
+        .btn-back:hover {
+            background-color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">TechFix<span>Pro</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" class="btn btn-secondary" id="book-now-btn">Book Now</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Expert Electronics Repair & Retail Solutions</h1>
+                <p>We fix your devices and provide quality electronics at affordable prices. Fast, reliable service with a satisfaction guarantee.</p>
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#products" class="btn btn-secondary">Shop Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Professional repair services for all your electronic devices</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1563212034-a9e5a5f3ae76" alt="Satellite Dish Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Satellite Dish Repair</h3>
+                        <p>Expert installation, alignment, and repair of all satellite dish systems for optimal TV reception.</p>
+                        <a href="#" class="btn book-service" data-service="Satellite Dish Repair">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" alt="Phone Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Phone Repair</h3>
+                        <p>Screen replacements, battery issues, charging ports, and software problems fixed quickly.</p>
+                        <a href="#" class="btn book-service" data-service="Phone Repair">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d" alt="Computer Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Computer Repair</h3>
+                        <p>Hardware upgrades, virus removal, software installation, and all laptop/desktop repairs.</p>
+                        <a href="#" class="btn book-service" data-service="Computer Repair">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Quality electronics and accessories at competitive prices</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd" alt="Satellite Dish">
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Satellite Dish</h3>
+                        <p class="product-price">$89.99</p>
+                        <p>High-quality satellite dish with strong signal reception for all weather conditions.</p>
+                        <button class="btn add-to-cart" data-product="Premium Satellite Dish" data-price="89.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd" alt="Smartphone">
+                    </div>
+                    <div class="product-content">
+                        <h3>Smartphone X200</h3>
+                        <p class="product-price">$199.99</p>
+                        <p>Latest model with high-resolution camera, long battery life, and fast processor.</p>
+                        <button class="btn add-to-cart" data-product="Smartphone X200" data-price="199.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" alt="Laptop">
+                    </div>
+                    <div class="product-content">
+                        <h3>Ultra Slim Laptop</h3>
+                        <p class="product-price">$599.99</p>
+                        <p>Powerful laptop with SSD storage, 16GB RAM, and lightweight design for mobility.</p>
+                        <button class="btn add-to-cart" data-product="Ultra Slim Laptop" data-price="599.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df" alt="Smart TV">
+                    </div>
+                    <div class="product-content">
+                        <h3>Smart TV 55"</h3>
+                        <p class="product-price">$449.99</p>
+                        <p>4K resolution with smart features, built-in apps, and excellent sound quality.</p>
+                        <button class="btn add-to-cart" data-product="Smart TV 55" data-price="449.99">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for inquiries or support</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+251 912 496 441</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>hammadhassen3@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Addis Ababa, Ethiopia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TechFix Pro</h3>
+                    <p>Your trusted partner for electronics repair and retail solutions. Quality service with guaranteed satisfaction.</p>
+                    <div class="social-links">
+                        <a href="https://t.me/itshe12" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Satellite Dish Repair</a></li>
+                        <li><a href="#">Phone Repair</a></li>
+                        <li><a href="#">Computer Repair</a></li>
+                        <li><a href="#">Home Appliance Repair</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Payment Methods</h3>
+                    <ul>
+                        <li>CBE Birr</li>
+                        <li>Telebirr</li>
+                        <li>Cash on Delivery</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechFix Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Book a Service</h2>
+            <div id="booking-status" class="status-message"></div>
+            
+            <div class="payment-steps" id="booking-steps">
+                <div class="step-indicator">
+                    <div class="step active">1</div>
+                    <div class="step">2</div>
+                    <div class="step">3</div>
+                </div>
+                
+                <!-- Step 1: Service Details -->
+                <div class="payment-step active" id="booking-step1">
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="service-type">Service Type</label>
+                            <input type="text" id="service-type" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-name">Full Name</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Phone Number</label>
+                            <input type="tel" id="customer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">Email Address</label>
+                            <input type="email" id="customer-email">
+                        </div>
+                        <div class="form-group">
+                            <label for="service-date">Preferred Date</label>
+                            <input type="date" id="service-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service-notes">Device Details/Issues</label>
+                            <textarea id="service-notes" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn" id="booking-next1">Next</button>
+                    </form>
+                </div>
+                
+                <!-- Step 2: Payment Information -->
+                <div class="payment-step" id="booking-step2">
+                    <div class="order-summary">
+                        <h3>Service Summary</h3>
+                        <div class="order-item">
+                            <span id="summary-service"></span>
+                            <span id="summary-price">$0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="file-upload-label">Upload Payment Receipt</label>
+                        <div class="file-upload" id="booking-receipt-upload">
+                            <input type="file" id="booking-receipt" accept="image/*,.pdf">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary);"></i>
+                            <p>Click to upload payment receipt</p>
+                            <p class="file-name" id="booking-receipt-name">No file selected</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="booking-payment-method">Payment Method</label>
+                        <select id="booking-payment-method" required>
+                            <option value="">Select payment method</option>
+                            <option value="CBE Birr">CBE Birr</option>
+                            <option value="Telebirr">Telebirr</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="booking-payment-notes">Payment Reference/Notes</label>
+                        <textarea id="booking-payment-notes" rows="2"></textarea>
+                    </div>
+                    
+                    <button type="button" class="btn btn-back" id="booking-back2">Back</button>
+                    <button type="button" class="btn" id="booking-next2">Submit Payment</button>
+                </div>
+                
+                <!-- Step 3: Verification -->
+                <div class="payment-step" id="booking-step3">
+                    <div class="status-message success">
+                        Your service booking and payment details have been submitted! Please wait for verification.
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Verification Code (Sent to your phone)</label>
+                        <div class="verification-code">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                        </div>
+                        <p id="booking-code-error" style="color: var(--danger); display: none;">Invalid verification code</p>
+                    </div>
+                    
+                    <button type="button" class="btn btn-back" id="booking-back3">Back</button>
+                    <button type="button" class="btn" id="booking-verify">Verify Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-status" class="status-message"></div>
+            
+            <div class="payment-steps" id="cart-steps">
+                <div class="step-indicator">
+                    <div class="step active">1</div>
+                    <div class="step">2</div>
+                    <div class="step">3</div>
+                </div>
+                
+                <!-- Step 1: Cart Items -->
+                <div class="payment-step active" id="cart-step1">
+                    <div class="order-summary" id="cart-items">
+                        <!-- Cart items will be dynamically inserted here -->
+                        <p>Your cart is currently empty.</p>
+                    </div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    
+                    <button type="button" class="btn" id="cart-next1" style="display: none;">Proceed to Checkout</button>
+                </div>
+                
+                <!-- Step 2: Customer & Payment Info -->
+                <div class="payment-step" id="cart-step2">
+                    <form id="customer-info-form">
+                        <div class="form-group">
+                            <label for="customer-name-cart">Full Name</label>
+                            <input type="text" id="customer-name-cart" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone-cart">Phone Number</label>
+                            <input type="tel" id="customer-phone-cart" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-address">Delivery Address</label>
+                            <textarea id="customer-address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="file-upload-label">Upload Payment Receipt</label>
+                            <div class="file-upload" id="cart-receipt-upload">
+                                <input type="file" id="cart-receipt" accept="image/*,.pdf">
+                                <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--primary);"></i>
+                                <p>Click to upload payment receipt</p>
+                                <p class="file-name" id="cart-receipt-name">No file selected</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cart-payment-method">Payment Method</label>
+                            <select id="cart-payment-method" required>
+                                <option value="">Select payment method</option>
+                                <option value="CBE Birr">CBE Birr</option>
+                                <option value="Telebirr">Telebirr</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cart-payment-notes">Payment Reference/Notes</label>
+                            <textarea id="cart-payment-notes" rows="2"></textarea>
+                        </div>
+                    </form>
+                    
+                    <button type="button" class="btn btn-back" id="cart-back2">Back</button>
+                    <button type="button" class="btn" id="cart-next2">Submit Payment</button>
+                </div>
+                
+                <!-- Step 3: Verification -->
+                <div class="payment-step" id="cart-step3">
+                    <div class="status-message success">
+                        Your order and payment details have been submitted! Please wait for verification.
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Verification Code (Sent to your phone)</label>
+                        <div class="verification-code">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                            <input type="text" maxlength="1" class="code-input">
+                        </div>
+                        <p id="cart-code-error" style="color: var(--danger); display: none;">Invalid verification code</p>
+                    </div>
+                    
+                    <button type="button" class="btn btn-back" id="cart-back3">Back</button>
+                    <button type="button" class="btn" id="cart-verify">Verify Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram Bot Configuration
+        const BOT_TOKEN = '8115830553:AAH9F2vBh9mlHidTJx39syIGawpSVWP5LK8';
+        const CHAT_ID = '5148030214';
+        const ADMIN_USERNAME = 'itshe12';
+        const PAYMENT_NUMBER = '0912496441';
+
+        // DOM Elements
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const bookingModal = document.getElementById('booking-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModals = document.querySelectorAll('.close-modal');
+        const bookServiceBtns = document.querySelectorAll('.book-service');
+        const serviceTypeInput = document.getElementById('service-type');
+        const bookingStatus = document.getElementById('booking-status');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const cartItemsEl = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartStatus = document.getElementById('cart-status');
+
+        // Booking Modal Elements
+        const bookingSteps = document.getElementById('booking-steps');
+        const bookingStep1 = document.getElementById('booking-step1');
+        const bookingStep2 = document.getElementById('booking-step2');
+        const bookingStep3 = document.getElementById('booking-step3');
+        const bookingNext1 = document.getElementById('booking-next1');
+        const bookingNext2 = document.getElementById('booking-next2');
+        const bookingBack2 = document.getElementById('booking-back2');
+        const bookingBack3 = document.getElementById('booking-back3');
+        const bookingVerify = document.getElementById('booking-verify');
+        const summaryService = document.getElementById('summary-service');
+        const summaryPrice = document.getElementById('summary-price');
+        const bookingReceiptUpload = document.getElementById('booking-receipt-upload');
+        const bookingReceiptInput = document.getElementById('booking-receipt');
+        const bookingReceiptName = document.getElementById('booking-receipt-name');
+        const bookingCodeError = document.getElementById('booking-code-error');
+
+        // Cart Modal Elements
+        const cartSteps = document.getElementById('cart-steps');
+        const cartStep1 = document.getElementById('cart-step1');
+        const cartStep2 = document.getElementById('cart-step2');
+        const cartStep3 = document.getElementById('cart-step3');
+        const cartNext1 = document.getElementById('cart-next1');
+        const cartNext2 = document.getElementById('cart-next2');
+        const cartBack2 = document.getElementById('cart-back2');
+        const cartBack3 = document.getElementById('cart-back3');
+        const cartVerify = document.getElementById('cart-verify');
+        const cartReceiptUpload = document.getElementById('cart-receipt-upload');
+        const cartReceiptInput = document.getElementById('cart-receipt');
+        const cartReceiptName = document.getElementById('cart-receipt-name');
+        const cartCodeError = document.getElementById('cart-code-error');
+
+        // Cart Data
+        let cart = [];
+        let generatedCode = '';
+        let currentServicePrice = 0;
+
+        // Modal Functions
+        function openModal(modal) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Reset all steps to initial state
+        function resetSteps(stepsContainer) {
+            const steps = stepsContainer.querySelectorAll('.payment-step');
+            const stepIndicators = stepsContainer.querySelectorAll('.step');
+            
+            steps.forEach(step => step.classList.remove('active'));
+            steps[0].classList.add('active');
+            
+            stepIndicators.forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            stepIndicators[0].classList.add('active');
+        }
+
+        // Event Listeners
+        bookNowBtn.addEventListener('click', () => {
+            serviceTypeInput.value = '';
+            bookingStatus.textContent = '';
+            bookingStatus.className = 'status-message';
+            resetSteps(bookingSteps);
+            openModal(bookingModal);
+        });
+
+        bookServiceBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                serviceTypeInput.value = btn.dataset.service;
+                currentServicePrice = 50; // Default service price
+                bookingStatus.textContent = '';
+                bookingStatus.className = 'status-message';
+                resetSteps(bookingSteps);
+                openModal(bookingModal);
+            });
+        });
+
+        closeModals.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target);
+            }
+        });
+
+        // Booking Steps Navigation
+        bookingNext1.addEventListener('click', () => {
+            // Validate step 1
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const date = document.getElementById('service-date').value;
+            
+            if (!name || !phone || !date) {
+                bookingStatus.textContent = 'Please fill all required fields';
+                bookingStatus.className = 'status-message error';
+                return;
+            }
+            
+            // Update summary
+            summaryService.textContent = serviceTypeInput.value;
+            summaryPrice.textContent = `$${currentServicePrice.toFixed(2)}`;
+            
+            // Move to step 2
+            bookingStep1.classList.remove('active');
+            bookingStep2.classList.add('active');
+            
+            // Update step indicator
+            const steps = bookingSteps.querySelectorAll('.step');
+            steps[0].classList.remove('active');
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+            
+            bookingStatus.textContent = '';
+            bookingStatus.className = 'status-message';
+        });
+
+        bookingBack2.addEventListener('click', () => {
+            // Back to step 1
+            bookingStep2.classList.remove('active');
+            bookingStep1.classList.add('active');
+            
+            // Update step indicator
+            const steps = bookingSteps.querySelectorAll('.step');
+            steps[1].classList.remove('active');
+            steps[0].classList.remove('completed');
+            steps[0].classList.add('active');
+        });
+
+        bookingNext2.addEventListener('click', () => {
+            // Validate step 2
+            const receipt = bookingReceiptInput.files[0];
+            const paymentMethod = document.getElementById('booking-payment-method').value;
+            
+            if (!receipt || !paymentMethod) {
+                bookingStatus.textContent = 'Please upload receipt and select payment method';
+                bookingStatus.className = 'status-message error';
+                return;
+            }
+            
+            // Collect all form data
+            const serviceType = serviceTypeInput.value;
+            const customerName = document.getElementById('customer-name').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const customerEmail = document.getElementById('customer-email').value;
+            const serviceDate = document.getElementById('service-date').value;
+            const serviceNotes = document.getElementById('service-notes').value;
+            const paymentNotes = document.getElementById('booking-payment-notes').value;
+            
+            // Generate verification code
+            generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Prepare message for admin
+            let message = `📌 New Service Booking:\n\n`;
+            message += `🔧 Service: ${serviceType}\n`;
+            message += `👤 Customer: ${customerName}\n`;
+            message += `📞 Phone: ${customerPhone}\n`;
+            message += `📧 Email: ${customerEmail || 'Not provided'}\n`;
+            message += `📅 Date: ${serviceDate}\n`;
+            message += `📝 Notes: ${serviceNotes || 'None'}\n\n`;
+            message += `💵 Payment Details:\n`;
+            message += `💰 Amount: $${currentServicePrice.toFixed(2)}\n`;
+            message += `💳 Method: ${paymentMethod}\n`;
+            message += `📋 Reference: ${paymentNotes || 'None'}\n\n`;
+            message += `✅ Verification Code: ${generatedCode}\n\n`;
+            message += `Please confirm payment and send the verification code to the customer.`;
+            
+            // In a real implementation, you would send the receipt file to your server
+            console.log('Receipt file:', receipt);
+            
+            // Send notification to Telegram
+            sendTelegramMessage(message);
+            
+            // Move to step 3
+            bookingStep2.classList.remove('active');
+            bookingStep3.classList.add('active');
+            
+            // Update step indicator
+            const steps = bookingSteps.querySelectorAll('.step');
+            steps[1].classList.remove('active');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+        });
+
+        bookingBack3.addEventListener('click', () => {
+            // Back to step 2
+            bookingStep3.classList.remove('active');
+            bookingStep2.classList.add('active');
+            
+            // Update step indicator
+            const steps = bookingSteps.querySelectorAll('.step');
+            steps[2].classList.remove('active');
+            steps[1].classList.remove('completed');
+            steps[1].classList.add('active');
+        });
+
+        bookingVerify.addEventListener('click', () => {
+            // Get the entered code
+            const codeInputs = bookingStep3.querySelectorAll('.code-input');
+            let enteredCode = '';
+            codeInputs.forEach(input => {
+                enteredCode += input.value;
+            });
+            
+            // Validate the code
+            if (enteredCode === generatedCode) {
+                // Code is correct - complete the booking
+                bookingStatus.textContent = 'Payment verified! Your service has been booked. We will contact you shortly.';
+                bookingStatus.className = 'status-message success';
+                
+                // Clear form and close modal after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('booking-form').reset();
+                    bookingReceiptInput.value = '';
+                    bookingReceiptName.textContent = 'No file selected';
+                    codeInputs.forEach(input => input.value = '');
+                    closeModal(bookingModal);
+                }, 3000);
+            } else {
+                // Code is incorrect
+                bookingCodeError.style.display = 'block';
+            }
+        });
+
+        // Cart Steps Navigation
+        cartNext1.addEventListener('click', () => {
+            // Move to step 2
+            cartStep1.classList.remove('active');
+            cartStep2.classList.add('active');
+            
+            // Update step indicator
+            const steps = cartSteps.querySelectorAll('.step');
+            steps[0].classList.remove('active');
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+        });
+
+        cartBack2.addEventListener('click', () => {
+            // Back to step 1
+            cartStep2.classList.remove('active');
+            cartStep1.classList.add('active');
+            
+            // Update step indicator
+            const steps = cartSteps.querySelectorAll('.step');
+            steps[1].classList.remove('active');
+            steps[0].classList.remove('completed');
+            steps[0].classList.add('active');
+        });
+
+        cartNext2.addEventListener('click', () => {
+            // Validate step 2
+            const name = document.getElementById('customer-name-cart').value;
+            const phone = document.getElementById('customer-phone-cart').value;
+            const address = document.getElementById('customer-address').value;
+            const receipt = cartReceiptInput.files[0];
+            const paymentMethod = document.getElementById('cart-payment-method').value;
+            
+            if (!name || !phone || !address || !receipt || !paymentMethod) {
+                cartStatus.textContent = 'Please fill all required fields';
+                cartStatus.className = 'status-message error';
+                return;
+            }
+            
+            // Generate verification code
+            generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Calculate total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Prepare order details
+            let orderDetails = `🛒 New Product Order:\n\n`;
+            orderDetails += `👤 Customer: ${name}\n`;
+            orderDetails += `📞 Phone: ${phone}\n`;
+            orderDetails += `🏠 Address: ${address}\n\n`;
+            orderDetails += `📦 Order Items:\n`;
+            
+            cart.forEach(item => {
+                orderDetails += `- ${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            
+            orderDetails += `\n💵 Payment Details:\n`;
+            orderDetails += `💰 Total: $${total.toFixed(2)}\n`;
+            orderDetails += `💳 Method: ${paymentMethod}\n`;
+            orderDetails += `📋 Reference: ${document.getElementById('cart-payment-notes').value || 'None'}\n\n`;
+            orderDetails += `✅ Verification Code: ${generatedCode}\n\n`;
+            orderDetails += `Please confirm payment and send the verification code to the customer.`;
+            
+            // In a real implementation, you would send the receipt file to your server
+            console.log('Receipt file:', receipt);
+            
+            // Send notification to Telegram
+            sendTelegramMessage(orderDetails);
+            
+            // Move to step 3
+            cartStep2.classList.remove('active');
+            cartStep3.classList.add('active');
+            
+            // Update step indicator
+            const steps = cartSteps.querySelectorAll('.step');
+            steps[1].classList.remove('active');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+            
+            cartStatus.textContent = '';
+            cartStatus.className = 'status-message';
+        });
+
+        cartBack3.addEventListener('click', () => {
+            // Back to step 2
+            cartStep3.classList.remove('active');
+            cartStep2.classList.add('active');
+            
+            // Update step indicator
+            const steps = cartSteps.querySelectorAll('.step');
+            steps[2].classList.remove('active');
+            steps[1].classList.remove('completed');
+            steps[1].classList.add('active');
+        });
+
+        cartVerify.addEventListener('click', () => {
+            // Get the entered code
+            const codeInputs = cartStep3.querySelectorAll('.code-input');
+            let enteredCode = '';
+            codeInputs.forEach(input => {
+                enteredCode += input.value;
+            });
+            
+            // Validate the code
+            if (enteredCode === generatedCode) {
+                // Code is correct - complete the order
+                cartStatus.textContent = 'Payment verified! Your order has been placed. We will contact you shortly for delivery.';
+                cartStatus.className = 'status-message success';
+                
+                // Clear cart and form after 3 seconds
+                setTimeout(() => {
+                    cart = [];
+                    updateCart();
+                    document.getElementById('customer-info-form').reset();
+                    cartReceiptInput.value = '';
+                    cartReceiptName.textContent = 'No file selected';
+                    codeInputs.forEach(input => input.value = '');
+                    closeModal(cartModal);
+                }, 3000);
+            } else {
+                // Code is incorrect
+                cartCodeError.style.display = 'block';
+            }
+        });
+
+        // File Upload Handling
+        bookingReceiptUpload.addEventListener('click', () => {
+            bookingReceiptInput.click();
+        });
+
+        bookingReceiptInput.addEventListener('change', () => {
+            if (bookingReceiptInput.files.length > 0) {
+                bookingReceiptName.textContent = bookingReceiptInput.files[0].name;
+            } else {
+                bookingReceiptName.textContent = 'No file selected';
+            }
+        });
+
+        cartReceiptUpload.addEventListener('click', () => {
+            cartReceiptInput.click();
+        });
+
+        cartReceiptInput.addEventListener('change', () => {
+            if (cartReceiptInput.files.length > 0) {
+                cartReceiptName.textContent = cartReceiptInput.files[0].name;
+            } else {
+                cartReceiptName.textContent = 'No file selected';
+            }
+        });
+
+        // Verification Code Input Handling
+        function setupCodeInputs(container) {
+            const inputs = container.querySelectorAll('.code-input');
+            
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', () => {
+                    if (input.value.length === 1) {
+                        if (index < inputs.length - 1) {
+                            inputs[index + 1].focus();
+                        }
+                    }
+                });
+                
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && input.value.length === 0) {
+                        if (index > 0) {
+                            inputs[index - 1].focus();
+                        }
+                    }
+                });
+            });
+        }
+
+        setupCodeInputs(bookingStep3);
+        setupCodeInputs(cartStep3);
+
+        // Cart Functions
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const product = btn.dataset.product;
+                const price = parseFloat(btn.dataset.price);
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        product,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                resetSteps(cartSteps);
+                openModal(cartModal);
+            });
+        });
+
+        function updateCart() {
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p>Your cart is currently empty.</p>';
+                cartTotalEl.textContent = '$0.00';
+                cartNext1.style.display = 'none';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHTML += `
+                    <div class="order-item">
+                        <div>
+                            <span>${item.product}</span>
+                            <div style="display: flex; align-items: center; margin-top: 0.3rem;">
+                                <button class="quantity-btn" data-product="${item.product}" data-action="decrease" style="width: 25px; height: 25px; border: none; background-color: #eee; cursor: pointer;">-</button>
+                                <span style="margin: 0 0.5rem;">${item.quantity}</span>
+                                <button class="quantity-btn" data-product="${item.product}" data-action="increase" style="width: 25px; height: 25px; border: none; background-color: #eee; cursor: pointer;">+</button>
+                            </div>
+                        </div>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            cartItemsEl.innerHTML = itemsHTML;
+            cartTotalEl.textContent = `$${total.toFixed(2)}`;
+            cartNext1.style.display = 'block';
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const product = btn.dataset.product;
+                    const action = btn.dataset.action;
+                    
+                    const item = cart.find(item => item.product === product);
+                    
+                    if (action === 'increase') {
+                        item.quantity += 1;
+                    } else if (action === 'decrease') {
+                        item.quantity -= 1;
+                        
+                        if (item.quantity <= 0) {
+                            cart = cart.filter(item => item.product !== product);
+                        }
+                    }
+                    
+                    updateCart();
+                });
+            });
+        }
+
+        // Telegram API Function
+        function sendTelegramMessage(message) {
+            // In a real implementation, you would send this to your backend
+            // For this demo, we'll just log it
+            console.log('Sending to Telegram:', message);
+            
+            // This would be the actual fetch request to the Telegram API
+            /*
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Telegram response:', data))
+            .catch(error => console.error('Error sending to Telegram:', error));
+            */
+        }
+
+        // Initialize the page
+        updateCart();
+    </script>
+</body>
+</html>
