@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Pro - Electronics Repair & Retail</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #27ae60;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .products {
+            background-color: #f9f9f9;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: #f5f5f5;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .close-modal:hover {
+            color: var(--danger);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .verification-code {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .verification-code input {
+            width: 40px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .verification-code input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .order-summary {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .status-message {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+            border: 1px solid #2ecc71;
+            display: block;
+        }
+        
+        .error {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+            border: 1px solid #e74c3c;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">TechFix<span>Pro</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" class="btn btn-secondary" id="book-now-btn">Book Now</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Expert Electronics Repair & Retail Solutions</h1>
+                <p>We fix your devices and provide quality electronics at affordable prices. Fast, reliable service with a satisfaction guarantee.</p>
+                <a href="#services" class="btn">Our Services</a>
+                <a href="#products" class="btn btn-secondary">Shop Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Professional repair services for all your electronic devices</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1563212034-a9e5a5f3ae76" alt="Satellite Dish Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Satellite Dish Repair</h3>
+                        <p>Expert installation, alignment, and repair of all satellite dish systems for optimal TV reception.</p>
+                        <a href="#" class="btn book-service" data-service="Satellite Dish Repair">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" alt="Phone Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Phone Repair</h3>
+                        <p>Screen replacements, battery issues, charging ports, and software problems fixed quickly.</p>
+                        <a href="#" class="btn book-service" data-service="Phone Repair">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d" alt="Computer Repair">
+                    </div>
+                    <div class="service-content">
+                        <h3>Computer Repair</h3>
+                        <p>Hardware upgrades, virus removal, software installation, and all laptop/desktop repairs.</p>
+                        <a href="#" class="btn book-service" data-service="Computer Repair">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Quality electronics and accessories at competitive prices</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd" alt="Satellite Dish">
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Satellite Dish</h3>
+                        <p class="product-price">$89.99</p>
+                        <p>High-quality satellite dish with strong signal reception for all weather conditions.</p>
+                        <button class="btn add-to-cart" data-product="Premium Satellite Dish" data-price="89.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd" alt="Smartphone">
+                    </div>
+                    <div class="product-content">
+                        <h3>Smartphone X200</h3>
+                        <p class="product-price">$199.99</p>
+                        <p>Latest model with high-resolution camera, long battery life, and fast processor.</p>
+                        <button class="btn add-to-cart" data-product="Smartphone X200" data-price="199.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45" alt="Laptop">
+                    </div>
+                    <div class="product-content">
+                        <h3>Ultra Slim Laptop</h3>
+                        <p class="product-price">$599.99</p>
+                        <p>Powerful laptop with SSD storage, 16GB RAM, and lightweight design for mobility.</p>
+                        <button class="btn add-to-cart" data-product="Ultra Slim Laptop" data-price="599.99">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df" alt="Smart TV">
+                    </div>
+                    <div class="product-content">
+                        <h3>Smart TV 55"</h3>
+                        <p class="product-price">$449.99</p>
+                        <p>4K resolution with smart features, built-in apps, and excellent sound quality.</p>
+                        <button class="btn add-to-cart" data-product="Smart TV 55" data-price="449.99">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for inquiries or support</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+251 912 496 441</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>hammadhassen3@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Addis Ababa, Ethiopia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TechFix Pro</h3>
+                    <p>Your trusted partner for electronics repair and retail solutions. Quality service with guaranteed satisfaction.</p>
+                    <div class="social-links">
+                        <a href="https://t.me/itshe12" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Satellite Dish Repair</a></li>
+                        <li><a href="#">Phone Repair</a></li>
+                        <li><a href="#">Computer Repair</a></li>
+                        <li><a href="#">Home Appliance Repair</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Payment Methods</h3>
+                    <ul>
+                        <li>CBE Birr</li>
+                        <li>Telebirr</li>
+                        <li>Cash on Delivery</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechFix Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Book a Service</h2>
+            <div id="booking-status" class="status-message"></div>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="service-type">Service Type</label>
+                    <input type="text" id="service-type" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-email">Email Address</label>
+                    <input type="email" id="customer-email">
+                </div>
+                <div class="form-group">
+                    <label for="service-date">Preferred Date</label>
+                    <input type="date" id="service-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-notes">Device Details/Issues</label>
+                    <textarea id="service-notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-status" class="status-message"></div>
+            <div class="order-summary" id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+                <p>Your cart is currently empty.</p>
+            </div>
+            <div class="order-total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method" id="telegram-payment">
+                    <i class="fab fa-telegram"></i>
+                    <p>Pay via Telegram</p>
+                </div>
+            </div>
+            <form id="checkout-form" style="display: none;">
+                <div class="form-group">
+                    <label for="customer-name-cart">Full Name</label>
+                    <input type="text" id="customer-name-cart" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone-cart">Phone Number</label>
+                    <input type="tel" id="customer-phone-cart" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Delivery Address</label>
+                    <textarea id="customer-address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Verification Code (Sent to your Telegram)</label>
+                    <div class="verification-code">
+                        <input type="text" maxlength="1" class="code-input">
+                        <input type="text" maxlength="1" class="code-input">
+                        <input type="text" maxlength="1" class="code-input">
+                        <input type="text" maxlength="1" class="code-input">
+                        <input type="text" maxlength="1" class="code-input">
+                        <input type="text" maxlength="1" class="code-input">
+                    </div>
+                    <p id="code-error" style="color: var(--danger); display: none;">Invalid verification code</p>
+                </div>
+                <button type="submit" class="btn">Complete Payment</button>
+            </form>
+            <button id="proceed-checkout" class="btn" style="display: none;">Proceed to Payment</button>
+        </div>
+    </div>
+
+    <script>
+        // Telegram Bot Configuration
+        const BOT_TOKEN = '8115830553:AAH9F2vBh9mlHidTJx39syIGawpSVWP5LK8';
+        const CHAT_ID = '5148030214';
+        const ADMIN_USERNAME = 'itshe12';
+
+        // DOM Elements
+        const bookNowBtn = document.getElementById('book-now-btn');
+        const bookingModal = document.getElementById('booking-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModals = document.querySelectorAll('.close-modal');
+        const bookServiceBtns = document.querySelectorAll('.book-service');
+        const serviceTypeInput = document.getElementById('service-type');
+        const bookingForm = document.getElementById('booking-form');
+        const bookingStatus = document.getElementById('booking-status');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const cartItemsEl = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartStatus = document.getElementById('cart-status');
+        const telegramPayment = document.getElementById('telegram-payment');
+        const checkoutForm = document.getElementById('checkout-form');
+        const proceedCheckoutBtn = document.getElementById('proceed-checkout');
+        const codeInputs = document.querySelectorAll('.code-input');
+        const codeError = document.getElementById('code-error');
+
+        // Cart Data
+        let cart = [];
+        let generatedCode = '';
+
+        // Modal Functions
+        function openModal(modal) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event Listeners
+        bookNowBtn.addEventListener('click', () => {
+            serviceTypeInput.value = '';
+            bookingStatus.textContent = '';
+            bookingStatus.className = 'status-message';
+            bookingForm.reset();
+            openModal(bookingModal);
+        });
+
+        bookServiceBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                serviceTypeInput.value = btn.dataset.service;
+                bookingStatus.textContent = '';
+                bookingStatus.className = 'status-message';
+                bookingForm.reset();
+                openModal(bookingModal);
+            });
+        });
+
+        closeModals.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target);
+            }
+        });
+
+        // Booking Form Submission
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const serviceType = serviceTypeInput.value;
+            const customerName = document.getElementById('customer-name').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const customerEmail = document.getElementById('customer-email').value;
+            const serviceDate = document.getElementById('service-date').value;
+            const serviceNotes = document.getElementById('service-notes').value;
+            
+            // In a real implementation, you would send this data to your server
+            // For this demo, we'll just show a success message
+            bookingStatus.textContent = `Your booking for ${serviceType} has been received! We'll contact you shortly to confirm.`;
+            bookingStatus.className = 'status-message success';
+            
+            // Send notification to Telegram
+            const message = `New Service Booking:\n\nService: ${serviceType}\nName: ${customerName}\nPhone: ${customerPhone}\nEmail: ${customerEmail}\nDate: ${serviceDate}\nNotes: ${serviceNotes}`;
+            sendTelegramMessage(message);
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                bookingForm.reset();
+                closeModal(bookingModal);
+            }, 3000);
+        });
+
+        // Cart Functions
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const product = btn.dataset.product;
+                const price = parseFloat(btn.dataset.price);
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.product === product);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        product,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                openModal(cartModal);
+            });
+        });
+
+        function updateCart() {
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p>Your cart is currently empty.</p>';
+                cartTotalEl.textContent = '$0.00';
+                proceedCheckoutBtn.style.display = 'none';
+                checkoutForm.style.display = 'none';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                itemsHTML += `
+                    <div class="order-item">
+                        <span>${item.product} x${item.quantity}</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            cartItemsEl.innerHTML = itemsHTML;
+            cartTotalEl.textContent = `$${total.toFixed(2)}`;
+            
+            if (cart.length > 0) {
+                proceedCheckoutBtn.style.display = 'block';
+            }
+        }
+
+        // Payment Process
+        telegramPayment.addEventListener('click', () => {
+            telegramPayment.classList.add('selected');
+            
+            // Generate a random 6-digit code
+            generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Get cart total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Send payment instructions via Telegram
+            const message = `Payment Request:\n\nOrder Total: $${total.toFixed(2)}\n\nPlease send payment to:\nCBE Birr: 0912496441\nTelebirr: 0912496441\n\nAfter payment, enter this verification code on the website: ${generatedCode}`;
+            sendTelegramMessage(message);
+            
+            cartStatus.textContent = 'Payment instructions sent to your Telegram. Please check your messages.';
+            cartStatus.className = 'status-message success';
+            
+            proceedCheckoutBtn.style.display = 'none';
+            checkoutForm.style.display = 'block';
+        });
+
+        // Verification Code Input Handling
+        codeInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1) {
+                    if (index < codeInputs.length - 1) {
+                        codeInputs[index + 1].focus();
+                    }
+                }
+            });
+            
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && input.value.length === 0) {
+                    if (index > 0) {
+                        codeInputs[index - 1].focus();
+                    }
+                }
+            });
+        });
+
+        // Checkout Form Submission
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get the entered code
+            let enteredCode = '';
+            codeInputs.forEach(input => {
+                enteredCode += input.value;
+            });
+            
+            // Validate the code
+            if (enteredCode === generatedCode) {
+                // Code is correct - complete the order
+                const customerName = document.getElementById('customer-name-cart').value;
+                const customerPhone = document.getElementById('customer-phone-cart').value;
+                const customerAddress = document.getElementById('customer-address').value;
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                // Send order confirmation to Telegram
+                let orderDetails = `Order Confirmation:\n\nCustomer: ${customerName}\nPhone: ${customerPhone}\nAddress: ${customerAddress}\n\nItems:\n`;
+                
+                cart.forEach(item => {
+                    orderDetails += `${item.product} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                });
+                
+                orderDetails += `\nTotal: $${total.toFixed(2)}\nPayment Verified`;
+                
+                sendTelegramMessage(orderDetails);
+                
+                // Show success message
+                cartStatus.textContent = 'Payment verified! Your order has been placed. We will contact you shortly for delivery.';
+                cartStatus.className = 'status-message success';
+                
+                // Clear cart and form
+                setTimeout(() => {
+                    cart = [];
+                    updateCart();
+                    checkoutForm.reset();
+                    codeInputs.forEach(input => input.value = '');
+                    closeModal(cartModal);
+                }, 3000);
+            } else {
+                // Code is incorrect
+                codeError.style.display = 'block';
+            }
+        });
+
+        // Telegram API Function
+        function sendTelegramMessage(message) {
+            // In a real implementation, you would send this to your backend
+            // For this demo, we'll just log it
+            console.log('Sending to Telegram:', message);
+            
+            // This would be the actual fetch request to the Telegram API
+            /*
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Telegram response:', data))
+            .catch(error => console.error('Error sending to Telegram:', error));
+            */
+        }
+
+        // Initialize the page
+        updateCart();
+    </script>
+</body>
+</html>
